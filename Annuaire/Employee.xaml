@@ -6,22 +6,21 @@
       xmlns:local="clr-namespace:Annuaire"
       mc:Ignorable="d"
       Title="Employe" Height="450" Width="800">
+    <!--Création de la grille d'affichage-->
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/> <!-- Barre de filtre -->
-            <RowDefinition Height="*"/>    <!-- DataGrid -->
-            <RowDefinition Height="Auto"/> <!-- Bouton "Voir fiche" -->
+            <RowDefinition Height="Auto"/> 
+            <RowDefinition Height="*"/>    
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-
-        <!-- Barre de filtre -->
+        
         <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="10">
             <TextBox Width="150" Text="{Binding NomFiltre}" />
             <ComboBox Width="150" ItemsSource="{Binding Sites}" SelectedItem="{Binding SelectedSite}" />
             <ComboBox Width="150" ItemsSource="{Binding Services}" SelectedItem="{Binding SelectedService}" />
             <Button Content="Filtrer" Command="{Binding FiltrerCommand}" />
         </StackPanel>
-
-        <!-- DataGrid -->
+        
         <DataGrid Grid.Row="1" ItemsSource="{Binding Employes}" AutoGenerateColumns="False" Margin="10">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nom" Binding="{Binding Nom}" Width="100" />
@@ -33,8 +32,7 @@
                 <DataGridTextColumn Header="Site" Binding="{Binding SiteId}" Width="100"/>
             </DataGrid.Columns>
         </DataGrid>
-
-        <!-- Bouton "Voir fiche" -->
+        
         <Button Grid.Row="2" Content="Voir fiche" Command="{Binding VoirFicheCommand}" Margin="10" />
     </Grid>
 </Page>
