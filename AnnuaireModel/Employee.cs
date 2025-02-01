@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AnnuaireModel;
@@ -12,11 +13,14 @@ public class Employee
     public string Phone { get; set; }
     public string CellPhone { get; set; }
     [ForeignKey("Site")] public int SiteId { get; set; }
+    public Site Site { get; set; }
     
     [ForeignKey ("Service")] public int ServiceId { get; set; }
-    
-    
-    public Employee() { }
+    public Service Service { get; set; }
+
+    public Employee()
+    {
+    }
     
     public Employee(int id, string lastName, string firsName, string email, string phone, string cellPhone, int serviceId,
         int siteId)
