@@ -1,6 +1,7 @@
 ﻿using AnnuaireModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace AnnuaireAPI.Controllers;
 [ApiController]
@@ -41,12 +42,62 @@ public class ServiceController : ControllerBase
     {
         try
         {
-            if 
+            if (service == null)
+            {
+                return BadRequest(new { message = "Invalid data." });
+            } 
+            appContext.Services.Add(service);
+            appContext.SaveChanges();
+            return CreatedAtRoute("GetServiceById", new { id = service.Id }, service);
         }
-        catch (Exception e)
+        catch (Exception ex)
         {
-            Console.WriteLine(e);
-            throw;
+            _logger.LogError(ex, "erreur lors du addService: {Message}", ex.Message);
+            return StatusCode(500,$"Erreur interne du serveur: {ex.Message}");
+        }
+    }
+    //Route API pour supprimer un service via son id
+    [HttpDelete("Delete [controller] by Id/{id}", Name = "DeleteServiceById")]
+    public IActionResult DeleteService(int id)
+    {
+        try
+        {
+            var service = appContext.Services
+                .Find(id);
+            if (service == null)
+            {
+                return NotFound(new { message = "Service not found." });
+            }
+            appContext.Services.Remove(service);
+            appContext.SaveChanges();
+            return NoContent();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "erreur lors du DeleteService: {Message}", ex.Message);
+            return StatusCode(500,$"Erreur interne du serveur: {ex.Message}");
+        }
+    }
+    //Route API pour modifier un service via son id
+    [HttpPut("Update [controller] by Id/{id}", Name = "UpdateServiceById")]
+    public IActionResult UpdateService(int id, Service updateService)
+    {
+        try
+        {
+            var existingService = appContext.Services.FirstOrDefault(s => s.Id == id);
+            if (existingService == null)
+            {
+                return NotFound(new { message = "Service not found." });
+            }
+            existingService.ServiceName = updateService.ServiceName;
+            appContext.Entry(existingService).State = EntityState.Modified;
+            appContext.SaveChanges();
+            return Ok(existingService);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "erreur lors du UpdateServiceById: {Message}", ex.Message);
+            return StatusCode(500,$"Erreur interne du serveur: {ex.Message}");
         }
     }
 }

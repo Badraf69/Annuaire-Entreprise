@@ -103,7 +103,8 @@ public class EmployeeController : ControllerBase
     {
         try
         {
-            var employee = await appContext.Employees.FindAsync(id);
+            var employee = await appContext.Employees
+                .FindAsync(id);
             if (employee == null)
             {
                 return NotFound(new { message = "Employee not found" });
