@@ -1,16 +1,18 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace AnnuaireModel;
-
-public class Site
+namespace AnnuaireModel
 {
-    [Key] public int Id { get; set; }
-    [Required] public string Ville { get; set; }
 
-    public Site(int id, string ville)
+    public class Site
     {
-        Id = id;
-        Ville = ville;
+        [Key] public int Id { get; set; }
+        [Required] public string Ville { get; set; }
+
+        public Site(int id, string ville)
+        {
+            Id = id;
+            Ville = ville;
+        }
+
     }
-    
 }

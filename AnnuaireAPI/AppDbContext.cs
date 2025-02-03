@@ -1,18 +1,36 @@
-﻿using System.Data.Entity;
+﻿
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
+using AnnuaireModel;
+using DbContext = Microsoft.EntityFrameworkCore.DbContext;
 
-namespace AnnuaireAPI;
-
-public class AppDbContext : DbContext
+namespace AnnuaireAPI.Controllers
 {
-    public DbSet<Employee> Employee { get; set; }
-    public DbSet<Services> Services { get; set; }
-    public DbSet<Sites> Sites { get; set; }
 
-    protected override void OnModelCreating(DbModelBuilder modelBuilder)
+    public class AppDbContext : DbContext
     {
-        OptionsBuilder.UseSqlServer("connection");
+        public DbSet<Employee> Employees { get; set; }
+        public DbSet<Service> Services { get; set; }
+        // public DbSet<Site> Sites { get; set; }
+
+        
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlite("Data Source=d:/DbTest.db");
+            base.OnConfiguring(optionsBuilder);
+        }
+        
+        
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // Configuration de l'entité Employee
+
+            modelBuilder.Entity<Employee>().HasData(
+                new Employee(  1,"Bill","Valence", "big.valence@gmail.com", "0632154879", "0125487963",null,null),
+                new Employee(2, "coucou", "test", "test@test.fr", "0214569852","0214569852",null,null)
+                );
+
+            base.OnModelCreating(modelBuilder);
+        }
+
     }
-    
 }

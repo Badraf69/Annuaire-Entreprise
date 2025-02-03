@@ -19,5 +19,16 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        MainFrame.NavigationService.Navigate(new EmployeePage());
+    }
+
+    private void BtnListeEmploye_Click(object sender, RoutedEventArgs e)
+    {
+        MainFrame.NavigationService.Navigate(new EmployeePage());
+    }
+
+    private void BtnFicheEmploye_Click(object sender, RoutedEventArgs e)
+    {
+        
     }
 }

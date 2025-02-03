@@ -1,16 +1,18 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace AnnuaireModel;
-
-public class Service
+namespace AnnuaireModel
 {
-    [Key] public int Id { get; set; }
-    [Required] public string ServiceName { get; set; }
 
-    public Service(int id, string serviceName)
+    public class Service
     {
-        Id = id;
-        ServiceName = serviceName;
-        
+        [Key] public int Id { get; set; }
+        [Required] public string ServiceName { get; set; }
+
+        public Service(int id, string serviceName)
+        {
+            Id = id;
+            ServiceName = serviceName;
+
+        }
     }
 }
