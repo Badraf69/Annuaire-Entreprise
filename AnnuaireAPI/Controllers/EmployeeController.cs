@@ -44,7 +44,6 @@ public class EmployeeController : ControllerBase
             _logger.LogError(ex, "erreur lors du getEmployees: {Message}", ex.Message);
             return StatusCode(500,$"Erreur interne du serveur: {ex.Message}");
         }
-        
     }
     
     //Route APi pour réupérer 1 employé via son id
@@ -71,7 +70,7 @@ public class EmployeeController : ControllerBase
     }
     
     //Route APi pour ajouter un employe    
-    [HttpPost("api/[controller]", Name = "AddEmployee")]
+    [HttpPost("Create [controller]", Name = "AddEmployee")]
     public  async Task<IActionResult> PostEmployee(Employee employee)
     {
         try

@@ -10,7 +10,7 @@ namespace AnnuaireAPI.Controllers
     {
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Service> Services { get; set; }
-        // public DbSet<Site> Sites { get; set; }
+        public DbSet<Site> Sites { get; set; }
 
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
