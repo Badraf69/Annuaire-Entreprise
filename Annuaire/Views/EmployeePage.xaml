@@ -29,8 +29,8 @@
                 <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="120" />
                 <DataGridTextColumn Header="Téléphone" Binding="{Binding Phone}" Width="120"/>
                 <DataGridTextColumn Header="Mobile" Binding="{Binding CellPhone}" Width="120"/>
-                <DataGridTextColumn Header="Service" Binding="{Binding ServiceId}" Width="100"/>
-                <DataGridTextColumn Header="Site" Binding="{Binding SiteId}" Width="100"/>
+                <DataGridTextColumn Header="Service" Binding="{Binding Service.ServiceName}" Width="100"/>
+                <DataGridTextColumn Header="Site" Binding="{Binding Site.Ville}" Width="100"/>
                 
                 
             </DataGrid.Columns>

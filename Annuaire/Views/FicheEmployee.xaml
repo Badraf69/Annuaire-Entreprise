@@ -46,12 +46,12 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Service : " Width="100"/>
-                <TextBlock Text="{Binding Service}" LineHeight="20" FontWeight="Bold" />
+                <TextBlock Text="{Binding Service.ServiceName}" LineHeight="20" FontWeight="Bold" />
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Sites : " Width="100"/>
-                <TextBlock Text="{Binding Sites}" LineHeight="20" FontWeight="Bold" />
+                <TextBlock Text="{Binding Site.Ville}" LineHeight="20" FontWeight="Bold" />
             </StackPanel>
         </StackPanel>
         
