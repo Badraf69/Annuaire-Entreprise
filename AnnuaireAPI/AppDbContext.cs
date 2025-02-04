@@ -29,8 +29,8 @@ namespace AnnuaireAPI.Controllers
             // Configuration de l'entité Employee
 
             modelBuilder.Entity<Employee>().HasData(
-                new Employee(  1,"Bill","Valence", "big.valence@gmail.com", "0632154879", "0125487963",null,null),
-                new Employee(2, "coucou", "test", "test@test.fr", "0214569852","0214569852",null,null)
+                new Employee(  1,"Bill","Valence", "big.valence@gmail.com", "0632154879", "0125487963",1,1),
+                new Employee(2, "coucou", "test", "test@test.fr", "0214569852","0214569852",1,2)
                 );
             modelBuilder.Entity<Service>().HasData(
                 new Service(1, "RH"),
@@ -40,8 +40,21 @@ namespace AnnuaireAPI.Controllers
                 new Site(1, "Lyon"),
                 new Site(2, "Nantes")
             );
+            
+            modelBuilder.Entity<Employee>()
+                .HasOne(s => s.Service)
+                .WithMany()
+                .HasForeignKey(s => s.ServiceId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Employee>()
+                .HasOne(s => s.Site)
+                .WithMany()
+                .HasForeignKey(s => s.SiteId)
+                .OnDelete(DeleteBehavior.Restrict);
             base.OnModelCreating(modelBuilder);
         }
+        
 
     }
 }

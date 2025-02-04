@@ -90,7 +90,7 @@ public class EmployeeController : ControllerBase
     }
     
     //Route API pour supprimer un employe via son id
-    [HttpDelete("delete[controller]/{id}", Name = "DeleteEmployee")]
+    [HttpDelete("Delete[controller]/{id}", Name = "DeleteEmployee")]
     public async Task<IActionResult> DeleteEmployee(int id)
     {
         try

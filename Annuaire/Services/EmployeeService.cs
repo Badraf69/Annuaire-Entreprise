@@ -27,7 +27,7 @@ public class EmployeeService
     {
         try
         {
-            var response = await _httpClient.DeleteAsync($"DeleteEmployee?employeeId={employeeId}");
+            var response = await _httpClient.DeleteAsync($"DeleteEmployee/{employeeId}");
             if (response.IsSuccessStatusCode)
             {
                 return true;
