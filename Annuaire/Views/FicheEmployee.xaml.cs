@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace Annuaire
 {
@@ -13,5 +14,12 @@ namespace Annuaire
             DataContext = _selectedEmployee;
         }
 
+        private void GoBack_Click(object sender, RoutedEventArgs e)
+        {
+            if (NavigationServiceSingleton.Instance.MainFrame.CanGoBack)
+            {
+                NavigationServiceSingleton.Instance.MainFrame.GoBack();
+            }
+        }
     }
 }

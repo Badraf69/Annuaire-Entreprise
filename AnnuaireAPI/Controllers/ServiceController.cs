@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AnnuaireAPI.Controllers;
 [ApiController]
-[Authorize]
+//[Authorize]
 public class ServiceController : ControllerBase 
 {
     private readonly ILogger<ServiceController> _logger;
@@ -17,8 +17,8 @@ public class ServiceController : ControllerBase
         _logger = logger;
     }
     //Route API pour récupérer tous les services
-    [HttpGet("Get all [controller]", Name = "GetAllServices")]
-    public ActionResult<IEnumerable<Service>> GetServices()
+    [HttpGet("GetAll[controller]s", Name = "GetAllServices")]
+    public ActionResult<IEnumerable<Service>> GetAllServices()
     {
         try
         {
@@ -36,9 +36,10 @@ public class ServiceController : ControllerBase
             return StatusCode(500,$"Erreur interne du serveur: {ex.Message}");
         }
     }
+    
     //Route API pour ajouter un service
-    [HttpPost("api/[controller]", Name = "PostServiceById")]
-    public IActionResult PostService(Service service)
+    [HttpPost("Add[controller]", Name = "AddService")]
+    public IActionResult AddService(Service service)
     {
         try
         {
@@ -56,9 +57,10 @@ public class ServiceController : ControllerBase
             return StatusCode(500,$"Erreur interne du serveur: {ex.Message}");
         }
     }
+    
     //Route API pour supprimer un service via son id
-    [HttpDelete("Delete [controller] by Id/{id}", Name = "DeleteServiceById")]
-    public IActionResult DeleteService(int id)
+    [HttpDelete("Delete[controller]ById/{id}", Name = "DeleteServiceById")]
+    public IActionResult DeleteServiceById(int id)
     {
         try
         {
@@ -78,9 +80,10 @@ public class ServiceController : ControllerBase
             return StatusCode(500,$"Erreur interne du serveur: {ex.Message}");
         }
     }
+    
     //Route API pour modifier un service via son id
-    [HttpPut("Update [controller] by Id/{id}", Name = "UpdateServiceById")]
-    public IActionResult UpdateService(int id, Service updateService)
+    [HttpPut("Update[controller]ById/{id}", Name = "UpdateServiceById")]
+    public IActionResult UpdateServiceById(int id, Service updateService)
     {
         try
         {

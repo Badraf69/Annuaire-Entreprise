@@ -22,7 +22,7 @@
         </StackPanel>
         
         
-        <DataGrid Grid.Row="1" x:Name="EmployeeDataGrid" ItemsSource="{Binding Employees}" Margin="10" SelectedItem="{Binding SelectedEmployee, Mode=TwoWay}">
+        <DataGrid Grid.Row="1" x:Name="EmployeeDataGrid" ItemsSource="{Binding Employees}" Margin="10" SelectedItem="{Binding SelectedEmployee, Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nom" Binding="{Binding LastName}" Width="100" />
                 <DataGridTextColumn Header="Prenom" Binding="{Binding FirstName}" Width="120"/>
@@ -31,9 +31,11 @@
                 <DataGridTextColumn Header="Mobile" Binding="{Binding CellPhone}" Width="120"/>
                 <DataGridTextColumn Header="Service" Binding="{Binding ServiceId}" Width="100"/>
                 <DataGridTextColumn Header="Site" Binding="{Binding SiteId}" Width="100"/>
+                
+                
             </DataGrid.Columns>
         </DataGrid>
         
-        <Button Grid.Row="2" Content="Voir fiche" Command="{Binding VoirFicheCommand}" Margin="10"/>
+        <!--<Button Grid.Row="2" Content="Voir fiche" Command="{Binding VoirFicheCommand}" Margin="10"/> -->
     </Grid>
 </Page>

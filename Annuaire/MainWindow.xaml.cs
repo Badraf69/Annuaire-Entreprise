@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AnnuaireModel;
 
 namespace Annuaire;
 
@@ -19,6 +20,7 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        NavigationServiceSingleton.Instance.MainFrame = MainFrame;
         MainFrame.NavigationService.Navigate(new EmployeePage());
     }
 
@@ -27,8 +29,8 @@ public partial class MainWindow : Window
         MainFrame.NavigationService.Navigate(new EmployeePage());
     }
 
-    private void BtnFicheEmploye_Click(object sender, RoutedEventArgs e)
-    {
-        
-    }
+    // private void BtnFicheEmploye_Click(object sender, RoutedEventArgs e)
+    // {
+    //     MainFrame.NavigationService.Navigate(new FicheEmployee());
+    // }
 }

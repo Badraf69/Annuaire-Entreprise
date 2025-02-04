@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AnnuaireAPI.Controllers;
 [ApiController]
-[Authorize]
+//[Authorize]
 
 public class EmployeeController : ControllerBase
 {
@@ -21,11 +21,8 @@ public class EmployeeController : ControllerBase
         _logger = logger;
     }
     // Route API pour récupérer tous les employés
-    [HttpGet("api/[controller]",Name = "GetEmployees")]
-    public async Task<ActionResult<IEnumerable<Employee>>> GetEmployees(
-        // [FromQuery]string? serviceId,
-        // [FromQuery]string? siteId
-        )
+    [HttpGet("GetAll[controller]s",Name = "GetAllEmployees")]
+    public async Task<ActionResult<IEnumerable<Employee>>> GetAllEmployees()
     {
         try
         {
@@ -46,8 +43,8 @@ public class EmployeeController : ControllerBase
         }
     }
     
-    //Route APi pour réupérer 1 employé via son id
-    [HttpGet("api/[controller]/{id}", Name = "GetEmployeeById")]
+    //Route APi pour récupérer 1 employé via son id
+    [HttpGet("Get[controller]ById/{id}", Name = "GetEmployeeById")]
     public async Task<IActionResult> GetEmployeeById(int id)
     {
         try
@@ -70,8 +67,8 @@ public class EmployeeController : ControllerBase
     }
     
     //Route APi pour ajouter un employe    
-    [HttpPost("Create [controller]", Name = "AddEmployee")]
-    public  async Task<IActionResult> PostEmployee(Employee employee)
+    [HttpPost("Add[controller]", Name = "AddEmployee")]
+    public  async Task<IActionResult> AddEmployee(Employee employee)
     {
         try
         {
@@ -79,11 +76,7 @@ public class EmployeeController : ControllerBase
             {
                 return BadRequest(new { message = "Invalid data." });
             }
-    
-            if (!IsGoodFormat(employee.CellPhone))
-            {
-                return BadRequest(new { message = "Cell phone is not a valid format." });
-            }
+            
             await appContext.Employees.AddAsync(employee);
             await appContext.SaveChangesAsync();
             return CreatedAtRoute("GetEmployeeById", new { id = employee.Id }, employee);
@@ -97,7 +90,7 @@ public class EmployeeController : ControllerBase
     }
     
     //Route API pour supprimer un employe via son id
-    [HttpDelete("api/[controller]/{id}", Name = "DeleteEmployee")]
+    [HttpDelete("delete[controller]/{id}", Name = "DeleteEmployee")]
     public async Task<IActionResult> DeleteEmployee(int id)
     {
         try
@@ -121,7 +114,7 @@ public class EmployeeController : ControllerBase
     }
     
     //Route API pour modifier un employe via son id
-    [HttpPut("api/[controller]/{id}", Name = "UpdateEmployeeById")]
+    [HttpPut("Update[controller]/{id}", Name = "UpdateEmployee")]
     public async Task<IActionResult> UpdateEmployee(int id, Employee updatedEmployee)
     {
         try
@@ -156,17 +149,5 @@ public class EmployeeController : ControllerBase
             _logger.LogError(ex, "erreur lors du UpdateEmployeeById: {Message}", ex.Message);
             return StatusCode(500,$"Erreur interne du serveur: {ex.Message}");
         }
-        
-    }
-    
-    private bool IsGoodFormat(string phoneNumber)
-    {
-        if (string.IsNullOrWhiteSpace(phoneNumber))
-        {
-            return false;
-        }
-    
-        string pattern = @"^\+?[1-9]\d{1,14}$"; // Format E.164
-        return Regex.IsMatch(phoneNumber, pattern);
     }
 }

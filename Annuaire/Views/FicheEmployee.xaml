@@ -58,6 +58,7 @@
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
             <Button Content="Modifier" Command="{Binding ModifierCommand}" Width="100" Margin="5"/>
             <Button Content="Supprimer" Command="{Binding SupprimerCommand}" Width="100" Margin="5" Background="Red" Foreground="White"/>
+            <Button Content = "Retour" Click = "GoBack_Click" Width="100" Margin="5"/>
         </StackPanel>
    </Grid>
 </Page>

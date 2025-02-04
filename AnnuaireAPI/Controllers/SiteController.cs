@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AnnuaireAPI.Controllers;
 [ApiController]
-[Authorize]
+//[Authorize]
 
 
 public class SiteController : ControllerBase
@@ -19,8 +19,8 @@ public class SiteController : ControllerBase
         _logger = logger;
     }
     // Route API pour récupérer tous les sites
-    [HttpGet("Get All [controller]", Name = "GetServices")]
-    public ActionResult<IEnumerable<Service>> GetServices()
+    [HttpGet("GetAll[controller]s", Name = "GetAllSites")]
+    public ActionResult<IEnumerable<Service>> GetAllSites()
     {
         try
         {
@@ -38,9 +38,22 @@ public class SiteController : ControllerBase
             return StatusCode(500,$"Erreur interne du serveur: {ex.Message}");
         }
     }
+    
+    //Route APi pour récupérer un site via son id
+    [HttpGet("Get[controller]ById/{id}", Name = "GetSiteById")]
+    public IActionResult GetSiteById(int id)
+    {
+        var site = appContext.Sites.FirstOrDefault(s => s.Id == id);
+        if (site == null)
+        {
+            return NotFound(new {message = "No site found"});
+        }
+        return Ok(site);
+    }
+    
     // Route API pour ajouter un site
-    [HttpPost("Create [controller]", Name = "AddSite")]
-    public IActionResult PostSite(Site site)
+    [HttpPost("Add[controller]", Name = "AddSite")]
+    public IActionResult AddSite(Site site)
     {
         try
         {
@@ -58,8 +71,9 @@ public class SiteController : ControllerBase
             return StatusCode(500,$"Erreur interne du serveur: {ex.Message}");
         }
     }
+    
     // Route API pour supprimer un site via son id
-    [HttpDelete("Delete [controller]", Name = "DeleteSite")]
+    [HttpDelete("Delete[controller]", Name = "DeleteSite")]
     public IActionResult DeleteSite(int id)
     {
         try
