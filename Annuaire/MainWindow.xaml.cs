@@ -19,11 +19,48 @@ namespace Annuaire;
 /// </summary>
 public partial class MainWindow : Window
 {
+    private readonly List<Key> _inputKeysSequence = new List<Key>();
+
+    private readonly List<Key> _KonamiCode = new List<Key>()
+    {
+        Key.B, Key.A
+    };
     public MainWindow()
     {
         InitializeComponent();
         NavigationServiceSingleton.MainFrame = MainFrame;
         MainFrame.NavigationService.Navigate(new ListeEmployeePage());
+        NavigationServiceSingleton.Navigate(new LoginView());
+        this.KeyDown += KonamiCode;
+    }
+
+    private void KonamiCode(object sender, KeyEventArgs e)
+    {
+        _inputKeysSequence.Add(e.Key);
+        if (_inputKeysSequence.Count > _KonamiCode.Count)
+        {
+            _inputKeysSequence.RemoveAt(0);
+        }
+
+        if (_inputKeysSequence.Count == _KonamiCode.Count)
+        {
+            bool iskonamiCode = true;
+            for (int i = 0; i < _KonamiCode.Count; i++)
+            {
+                if (_inputKeysSequence[i] != _KonamiCode[i])
+                {
+                    iskonamiCode = false;
+                    break;
+                }
+            }
+
+            if (iskonamiCode)
+            {
+                NavigationServiceSingleton.MainFrame.Navigate(new ListeEmployeePage());
+                //MessageBox.Show("Konami Code OK");
+                _inputKeysSequence.Clear();
+            }
+        }
     }
 
     // private void BtnListeEmploye_Click(object sender, RoutedEventArgs e)
