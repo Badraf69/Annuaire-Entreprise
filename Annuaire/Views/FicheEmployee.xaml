@@ -20,26 +20,26 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Nom : "  Width="100"/>
-                <TextBlock Text="{Binding LastName}" LineHeight="20" FontWeight="Bold"/>
+                <TextBlock Text="{Binding Employee.LastName}" LineHeight="20" FontWeight="Bold"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Prénom : " Width="100"/>
-                <TextBlock Text="{Binding FirstName}" LineHeight="20" FontWeight="Bold" />
+                <TextBlock Text="{Binding  Employee.FirstName}" LineHeight="20" FontWeight="Bold" />
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Email : " Width="100"/>
-                <TextBlock Text="{Binding Email}" LineHeight="20" FontWeight="Bold" />
+                <TextBlock Text="{Binding Employee.Email}" LineHeight="20" FontWeight="Bold" />
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Téléphone fixe : " Width="100"/>
-                <TextBlock Text="{Binding Phone}" LineHeight="20" FontWeight="Bold" />
+                <TextBlock Text="{Binding Employee.Phone}" LineHeight="20" FontWeight="Bold" />
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Téléphone Portable : " Width="120"/>
-                <TextBlock Text="{Binding CellPhone}" LineHeight="20" FontWeight="Bold" />
+                <TextBlock Text="{Binding Employee.CellPhone}" LineHeight="20" FontWeight="Bold" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Information professionnelle : " FontFamily="Arial" Width="150" TextDecorations="Underline" LineHeight="20"/>

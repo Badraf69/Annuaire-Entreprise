@@ -7,11 +7,13 @@ using AnnuaireModel;
 
 namespace Annuaire.Views;
 
-public class FicheEmployeViewModel
+public class FicheEmployeViewModel : INotifyPropertyChanged
 {
     private readonly EmployeeService _employeeService;
-    public Employee Employee { get; set; }
-    public ICommand SupprimerCommand { get; }
+    private Employee _employee;
+    
+    public event PropertyChangedEventHandler? PropertyChanged;
+    
 
     public FicheEmployeViewModel(Employee employee, EmployeeService employeeService)
     {
@@ -21,6 +23,16 @@ public class FicheEmployeViewModel
         
     }
 
+    public Employee Employee
+    {
+        get => _employee;
+        set
+        {
+            _employee = value;
+            OnPropertyChanged();
+        }
+    }
+    public ICommand SupprimerCommand { get; }
     private async Task SupprimerEmploye()
     {
         if (_employeeService == null) return;
@@ -43,8 +55,8 @@ public class FicheEmployeViewModel
             }
         }
     }
-    // private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    // {
-    //     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    // }
+    private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
 }
