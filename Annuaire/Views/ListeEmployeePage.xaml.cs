@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 using Annuaire.Services;
 
 namespace Annuaire.Views
@@ -22,5 +23,7 @@ namespace Annuaire.Views
                 viewModel.NavigateToFicheEmployeeCommand.Execute(null);
             }
         }
+
+
     }
 }

@@ -23,9 +23,12 @@ public class ListEmployeeViewModel : INotifyPropertyChanged
         LoadEmployees();
         NavigateToFicheEmployeeCommand =
             new RelayCommand(_ => NavigateToFicheEmployee(), _ => SelectedEmployee != null);
+        NavigateToAddEmployeeCommand = 
+            new RelayCommand(_ => NavigateToAddEmployee());
     }
     
     public event Action OnNavigateToFicheEmployee;
+    public event Action OnNavigateToAddEmployeeCommand;
     public event PropertyChangedEventHandler? PropertyChanged;
     
     public ObservableCollection<Employee> Employees
@@ -38,8 +41,10 @@ public class ListEmployeeViewModel : INotifyPropertyChanged
         }
     }
     
+    
     public ICommand NavigateToFicheEmployeeCommand { get; }
     public ICommand LoadEmployeesCommand { get; }
+    public ICommand NavigateToAddEmployeeCommand { get; }
 
     private async void LoadEmployees()
     {
@@ -65,12 +70,17 @@ public class ListEmployeeViewModel : INotifyPropertyChanged
             NavigationServiceSingleton.Navigate(new FicheEmployee(_selectedEmployee, _employeeService));
         }
     }
+    private async Task NavigateToAddEmployee()
+    {
+        NavigationServiceSingleton.Navigate(new AddEmployeePage());
+    }
 
     private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
-   
+
+    
 }
 
 public class RelayCommand : ICommand
@@ -84,7 +94,7 @@ public class RelayCommand : ICommand
         _canExecute = canExecute;
         
     }
-
+    
     public event EventHandler? CanExecuteChanged;
 
 
