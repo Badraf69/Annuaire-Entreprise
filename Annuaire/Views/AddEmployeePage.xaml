@@ -21,7 +21,7 @@
             <RowDefinition Height="Auto"/>  
         </Grid.RowDefinitions>
         
-        <TextBlock Grid.Row="0" Text="{Binding LastName}" 
+        <TextBlock Grid.Row="0" Text="Ajouter un employé" 
                    FontSize="18" FontWeight="Bold" 
                    HorizontalAlignment="Center" Margin="10"/>
         
@@ -31,44 +31,43 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Nom : "  Width="100"/>
-                <TextBox Text=" champ1"/> 
+                <TextBox Text="{Binding Employee.LastName, UpdateSourceTrigger=PropertyChanged}"/> 
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Prénom : " Width="100"/>
-                <TextBox Text=" champ1"/>        
+                <TextBox Text="{Binding Employee.FirstName, UpdateSourceTrigger=PropertyChanged}"/>        
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Email : " Width="100"/>
-                <TextBox Text=" champ1"/>          
+                <TextBox Text="{Binding Employee.Email, UpdateSourceTrigger=PropertyChanged}"/>          
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Téléphone fixe : " Width="100"/>
-                <TextBox Text=" champ1"/>       
+                <TextBox Text="{Binding Employee.Phone, UpdateSourceTrigger=PropertyChanged}"/>       
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Téléphone Portable : " Width="120"/>
-                <TextBox Text=" champ1"/>        
+                <TextBox Text="{Binding Employee.CellPhone, UpdateSourceTrigger=PropertyChanged}"/>        
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Information professionnelle : " FontFamily="Arial" Width="150" TextDecorations="Underline" LineHeight="20"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Service : "  Width="100"/>
-                <TextBox Text=" champ1"/> 
+                <ComboBox ItemsSource="{Binding Services}"  SelectedValue="{Binding Employee.ServiceId}" DisplayMemberPath="ServiceName" SelectedValuePath="Id" Width="150"></ComboBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Site : " Width="100"/>
-                <TextBox Text=" champ1"/>        
+                <ComboBox ItemsSource="{Binding Sites}"  SelectedValue="{Binding Employee.SiteId}" DisplayMemberPath="Ville" SelectedValuePath="Id" Width="150"></ComboBox>
             </StackPanel>
         </StackPanel>
         
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
-            <Button Content="Modifier" Command="{Binding ModifierCommand}" Width="100" Margin="5" />
-            <Button Content="Supprimer" Command="{Binding SupprimerCommand}" Width="100" Margin="5" Background="Red" Foreground="White"/>
-            <Button Content = "Retour" Width="100" Margin="5"/>
+            <Button Content="Enregistrer" Command="{Binding AddEmployeeCommand}" Width="100" Margin="5" />
+            <Button Content = "Retour"  Click ="GoBack_Click" Width="100" Margin="5"/>
         </StackPanel>
         
     </Grid>

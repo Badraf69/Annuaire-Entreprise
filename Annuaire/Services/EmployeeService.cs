@@ -1,4 +1,5 @@
 ﻿using System.Net.Http;
+using System.Net.Http.Json;
 using System.Text.Json;
 using AnnuaireModel;
 
@@ -37,6 +38,27 @@ public class EmployeeService
                 string errorMessage = await response.Content.ReadAsStringAsync();
                 Console.WriteLine($"Erreur de suppression : {errorMessage}");
                 return false;
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+
+    public async Task<Employee> AddEmployee(Employee employee)
+    {
+        try
+        {
+            var response =  await _httpClient.PostAsJsonAsync($"AddEmployee", employee);
+            if (response.IsSuccessStatusCode)
+            {
+                return await response.Content.ReadFromJsonAsync<Employee>();
+            }
+            else
+            {
+               throw new Exception($"Erreur lors de l'ajout d'un employé : { response.ReasonPhrase}");
             }
         }
         catch (Exception e)
