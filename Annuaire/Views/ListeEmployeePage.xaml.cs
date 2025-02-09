@@ -12,8 +12,6 @@ namespace Annuaire.Views
             InitializeComponent();
             var employeeService = new EmployeeService();
             DataContext = new ListEmployeeViewModel(employeeService);
-            Console.WriteLine(DataContext);
-            Console.WriteLine($"test du focntionnement je suis dans ListeEmployeePage.xaml.cs");
         }
 
         private void EmployeesListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
