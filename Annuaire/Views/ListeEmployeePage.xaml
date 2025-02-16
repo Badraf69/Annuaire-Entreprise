@@ -5,77 +5,99 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:Annuaire.Views"
       mc:Ignorable="d"
-      Title="ListeEmployeePage" Height="450" Width="800">
-    <Page.Resources>
-        <Style TargetType="Button">
-            <Setter Property="Background" Value="LightGray"/>
-            <Setter Property="Foreground" Value="Black"/>
-            <Setter Property="Padding" Value="5"/>
-            
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="SteelBlue"/>
-                    <Setter Property="Foreground" Value="White"/>
-                    
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-    </Page.Resources>
+      Title="ListeEmployeePage" Height="550" Width="900">
+    <!-- <Page.Resources> -->
+    <!--     <Style TargetType="Button"> -->
+    <!--         <Setter Property="Background" Value="LightGray"/> -->
+    <!--         <Setter Property="Foreground" Value="Black"/> -->
+    <!--         <Setter Property="Padding" Value="5"/> -->
+    <!--          -->
+    <!--         <Style.Triggers> -->
+    <!--             <Trigger Property="IsMouseOver" Value="True"> -->
+    <!--                 <Setter Property="Background" Value="SteelBlue"/> -->
+    <!--                 <Setter Property="Foreground" Value="White"/> -->
+    <!--             </Trigger> -->
+    <!--         </Style.Triggers> -->
+    <!--     </Style> -->
+    <!-- </Page.Resources> -->
     
     <Grid>
-        
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/> 
-            <RowDefinition Height="*"/>    
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        
-        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="20">
-            <!-- <TextBox Width="150" Text="{Binding NomFiltre}" /> -->
-            <!-- <ComboBox Width="150" ItemsSource="{Binding Sites}" SelectedItem="{Binding SelectedSite}" /> -->
-            <!-- <ComboBox Width="150" ItemsSource="{Binding Services}" SelectedItem="{Binding SelectedService}" /> -->
-            <Button Content="Ajouter Employé" Command="{Binding NavigateToAddEmployeeCommand}" Width="120" BorderThickness="2" BorderBrush="Gray" Margin="0,0,5,0" >
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}" CornerRadius="10" Padding="{TemplateBinding Padding}">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button> 
-            <Button Content="Services" Command="{Binding FiltrerCommand}" Width="120" BorderThickness="2" BorderBrush="Gray" Margin="5,0,5,0" >
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}" CornerRadius="10" Padding="{TemplateBinding Padding}">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button> 
-            <Button Content="Sites" Command="{Binding FiltrerCommand}" Width="120" BorderThickness="2" BorderBrush="Gray" Margin="5,0,0,0" >
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}" CornerRadius="10" Padding="{TemplateBinding Padding}">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button> 
-        </StackPanel>
-        
-                <DataGrid Grid.Row="1" x:Name="EmployeeDataGrid" ItemsSource="{Binding Employees}" Margin="10" SelectedItem="{Binding SelectedEmployee, Mode=TwoWay}" SelectionChanged="EmployeesListView_SelectionChanged" AutoGenerateColumns="False" CanUserAddRows="False" BorderThickness="2">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="92*"/>
+            <ColumnDefinition Width="8*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="1" >
+            <StackPanel VerticalAlignment="Center" >
+                <Button Content="Menu" Command="{Binding NavigateToMenuCommand}" Style="{StaticResource buttonNav}" Foreground="White"/>
+                <Button Content="Site" Command="{Binding NavigateToSiteCommand}" Style="{StaticResource buttonNav}" Foreground="White"/>
+                <Button Content="Service" Command="{Binding NavigateToServiceCommand}" Style="{StaticResource buttonNav}" Foreground="White"/>
+                <Button Click="BtnRetour_Click" Content="Back" Style="{StaticResource buttonNav}" Foreground="White"/>
+
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/> 
+                <RowDefinition Height="*"/>    
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" Grid.Row="0"  Margin="20">
+                <!-- <TextBox Width="150" Text="{Binding NomFiltre}" /> -->
+                <!-- <ComboBox Width="150" ItemsSource="{Binding Sites}" SelectedItem="{Binding SelectedSite}" /> -->
+                <!-- <ComboBox Width="150" ItemsSource="{Binding Services}" SelectedItem="{Binding SelectedService}" /> -->
+                <ComboBox x:Name="ServiceFilter" ItemsSource="{Binding }">
+                    <ComboBox.Items>
+                    </ComboBox.Items>
+                </ComboBox>
+                <Label>Filtre Site :</Label>
+                <ComboBox Style="{StaticResource champSearch}">
+                    <ComboBox.Items>
+                    </ComboBox.Items>
+                </ComboBox>
+               
+                <Button Content="Ajouter Employé" Command="{Binding NavigateToAddEmployeeCommand}" Width="120" BorderThickness="2" BorderBrush="#999190" Margin="0,0,5,0" >
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" CornerRadius="10" Padding="{TemplateBinding Padding}">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button> 
+                <!-- <Button Content="Services" Command="{Binding FiltrerCommand}" Width="120" BorderThickness="2" BorderBrush="Gray" Margin="5,0,5,0" > -->
+                <!--     <Button.Template> -->
+                <!--         <ControlTemplate TargetType="Button"> -->
+                <!--             <Border Background="{TemplateBinding Background}" CornerRadius="10" Padding="{TemplateBinding Padding}"> -->
+                <!--                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/> -->
+                <!--             </Border> -->
+                <!--         </ControlTemplate> -->
+                <!--     </Button.Template> -->
+                <!-- </Button>  -->
+                <!-- <Button Content="Sites" Command="{Binding FiltrerCommand}" Width="120" BorderThickness="2" BorderBrush="Gray" Margin="5,0,0,0" > -->
+                <!--     <Button.Template> -->
+                <!--         <ControlTemplate TargetType="Button"> -->
+                <!--             <Border Background="{TemplateBinding Background}" CornerRadius="10" Padding="{TemplateBinding Padding}"> -->
+                <!--                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/> -->
+                <!--             </Border> -->
+                <!--         </ControlTemplate> -->
+                <!--     </Button.Template> -->
+                <!-- </Button>  -->
+            </StackPanel>
+            <DataGrid Grid.Row="1" x:Name="EmployeeDataGrid" ItemsSource="{Binding Employees}" Margin="10" SelectedItem="{Binding SelectedEmployee, Mode=TwoWay}" SelectionChanged="EmployeesListView_SelectionChanged" AutoGenerateColumns="False" CanUserAddRows="False" BorderThickness="2">
+                
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Nom" Binding="{Binding LastName}" Width="100" />
+                    <DataGridTextColumn Header="Prenom" Binding="{Binding FirstName}" Width="120"/>
+                    <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="120" />
+                    <DataGridTextColumn Header="Téléphone" Binding="{Binding Phone}" Width="120"/>
+                    <DataGridTextColumn Header="Mobile" Binding="{Binding CellPhone}" Width="120"/>
+                    <DataGridTextColumn Header="Service" Binding="{Binding Service.ServiceName}" Width="100"/>
+                    <DataGridTextColumn Header="Site" Binding="{Binding Site.Ville}" Width="100"/>
+                </DataGrid.Columns>
+            </DataGrid>
                     
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Nom" Binding="{Binding LastName}" Width="100" />
-                        <DataGridTextColumn Header="Prenom" Binding="{Binding FirstName}" Width="120"/>
-                        <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="120" />
-                        <DataGridTextColumn Header="Téléphone" Binding="{Binding Phone}" Width="120"/>
-                        <DataGridTextColumn Header="Mobile" Binding="{Binding CellPhone}" Width="120"/>
-                        <DataGridTextColumn Header="Service" Binding="{Binding Service.ServiceName}" Width="100"/>
-                        <DataGridTextColumn Header="Site" Binding="{Binding Site.Ville}" Width="100"/>
-                    </DataGrid.Columns>
-                </DataGrid>
         <!--<Button Grid.Row="2" Content="Voir fiche" Command="{Binding VoirFicheCommand}" Margin="10"/> -->
+        </Grid>
     </Grid>
     
 </Page>

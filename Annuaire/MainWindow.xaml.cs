@@ -28,12 +28,18 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        NavigationServiceSingleton.MainFrame = MainFrame;
-        MainFrame.NavigationService.Navigate(new ListeEmployeePage());
-        NavigationServiceSingleton.Navigate(new LoginView());
+        //NavigationServiceSingleton.MainFrame = MainFrame;
+        //MainFrame.NavigationService.Navigate(new ListeEmployeePage());
+        //NavigationServiceSingleton.Navigate(new LoginView());
+        NavigationServiceSingleton.Instance.Initialize(MainFrame);
+        NavigationServiceSingleton.Instance.GoToFirstPage(new LoginView());
         this.KeyDown += KonamiCode;
     }
 
+    private void load(object sender, RoutedEventArgs e)
+    {
+        NavigationServiceSingleton.Navigate(new LoginView());
+    } 
     private void KonamiCode(object sender, KeyEventArgs e)
     {
         _inputKeysSequence.Add(e.Key);
@@ -56,7 +62,7 @@ public partial class MainWindow : Window
 
             if (iskonamiCode)
             {
-                NavigationServiceSingleton.MainFrame.Navigate(new ListeEmployeePage());
+                NavigationServiceSingleton.Navigate(new ListeEmployeePage());
                 //MessageBox.Show("Konami Code OK");
                 _inputKeysSequence.Clear();
             }

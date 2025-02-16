@@ -14,10 +14,8 @@ public partial class AddEmployeePage : Page
     }
     private void GoBack_Click(object sender, RoutedEventArgs e)
     {
-        if (NavigationServiceSingleton.MainFrame.CanGoBack)
-        {
+
             ListeEmployeePage listEmployeePage = new ListeEmployeePage();
-            NavigationServiceSingleton.MainFrame.GoBack();
-        }
+            NavigationServiceSingleton.Instance.GoBack();
     }
 }

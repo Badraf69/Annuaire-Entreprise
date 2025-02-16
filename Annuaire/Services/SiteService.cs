@@ -7,7 +7,6 @@ namespace Annuaire.Services;
 
 public class SiteService
 {
-    private readonly ILogger<SiteService> _logger;
     private readonly HttpClient _httpClient;
 
     public SiteService()

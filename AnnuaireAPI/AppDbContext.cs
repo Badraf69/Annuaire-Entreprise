@@ -37,8 +37,8 @@ namespace AnnuaireAPI.Controllers
                 new Service(2, "Compta")
             );
             modelBuilder.Entity<Site>().HasData(
-                new Site(1, "Lyon"),
-                new Site(2, "Nantes")
+                new Site(1, "Lyon", "Siège sociale"),
+                new Site(2, "Nantes", "Production")
             );
             
             modelBuilder.Entity<Employee>()

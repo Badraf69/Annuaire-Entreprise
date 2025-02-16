@@ -21,10 +21,9 @@ namespace Annuaire
 
         private void GoBack_Click(object sender, RoutedEventArgs e)
         {
-            if (NavigationServiceSingleton.MainFrame.CanGoBack)
-            {
-                NavigationServiceSingleton.MainFrame.GoBack();
-            }
+
+                NavigationServiceSingleton.Instance.GoBack();
+
         }
         
     }

@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using System.Windows.Navigation;
 using Annuaire.Services;
+using Annuaire.ViewModel;
 using AnnuaireModel;
 
 namespace Annuaire.Views;
@@ -14,21 +15,32 @@ public class ListEmployeeViewModel : INotifyPropertyChanged
     private readonly EmployeeService _employeeService;
     private ObservableCollection<Employee> _employees;
     private Employee _selectedEmployee;
+    private ObservableCollection<Service> _services;
+    private readonly ServiceService _serviceService;
 
 
     public ListEmployeeViewModel(EmployeeService employeeService)
     {
         _employeeService = employeeService;
+        _serviceService = new ServiceService();
         Employees = new ObservableCollection<Employee>();
+        Services = new ObservableCollection<Service>();
         LoadEmployees();
         NavigateToFicheEmployeeCommand =
             new RelayCommand(_ => NavigateToFicheEmployee(), _ => SelectedEmployee != null);
         NavigateToAddEmployeeCommand = 
             new RelayCommand(_ => NavigateToAddEmployee());
+        NavigateToServiceCommand = App.NavigationVM.NavigateToListServiceCommand;
+        NavigateToSiteCommand = App.NavigationVM.NavigateToListSiteCommand;
+        NavigateToMenuCommand = App.NavigationVM.NavigateToMenuCommand;
+        
     }
     
-    public event Action OnNavigateToFicheEmployee;
-    public event Action OnNavigateToAddEmployeeCommand;
+    // public event Action OnNavigateToFicheEmployee;
+    // public event Action OnNavigateToAddEmployeeCommand;
+    // public event Action OnNavigateToService;
+    // public event Action OnNavigateToSiteCommand;
+    // public event Action OnNavigateToMenuCommand;
     public event PropertyChangedEventHandler? PropertyChanged;
     
     public ObservableCollection<Employee> Employees
@@ -40,11 +52,23 @@ public class ListEmployeeViewModel : INotifyPropertyChanged
             OnPropertyChanged();
         }
     }
-    
+
+    public ObservableCollection<Service> Services
+    {
+        get => _services;
+        set
+        {
+            _services = value;
+            OnPropertyChanged();
+        }
+    }
     
     public ICommand NavigateToFicheEmployeeCommand { get; }
-    public ICommand LoadEmployeesCommand { get; }
+    //public ICommand LoadEmployeesCommand { get; }
     public ICommand NavigateToAddEmployeeCommand { get; }
+    public ICommand NavigateToServiceCommand { get; }
+    public ICommand NavigateToSiteCommand { get; }
+    public ICommand NavigateToMenuCommand { get; }
 
     private async void LoadEmployees()
     {
@@ -80,24 +104,23 @@ public class ListEmployeeViewModel : INotifyPropertyChanged
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
-    
-}
-
-public class RelayCommand : ICommand
-{
-    private readonly Action<object> _execute;
-    private readonly Predicate<object> _canExecute;
-
-    public RelayCommand(Action<object> execute, Predicate<object> canExecute = null)
+    // private async Task NavigateToService()
+    // {
+    //     NavigationServiceSingleton.Navigate(new ListServicePage());
+    // }
+    //
+    // private async Task NavigateToSite()
+    // {
+    //     NavigationServiceSingleton.Navigate(new ListSitePage());
+    // }
+    // public void NavigateToMenu()
+    // {
+    //     NavigationServiceSingleton.Navigate(new MainPage());
+    // }
+    private async void Service()
     {
-        _execute = execute;
-        _canExecute = canExecute;
-        
+        var services = await _serviceService.GetServicesAsync();
     }
     
-    public event EventHandler? CanExecuteChanged;
-
-
-    public bool CanExecute(object? parameter)=> _canExecute == null || _canExecute(parameter);
-    public void Execute(object? parameter)=> _execute(parameter);
 }
+

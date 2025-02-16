@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using Annuaire.Services;
+using Annuaire.ViewModel;
 
 namespace Annuaire.Views
 {
@@ -22,6 +23,15 @@ namespace Annuaire.Views
             }
         }
 
+        private void BtnRetour_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationServiceSingleton.Instance.GoBack();
+        }
+
+        private void FilterEmployee(object sender, RoutedEventArgs e)
+        {
+            var employeeService = new EmployeeService();
+        }
 
     }
 }

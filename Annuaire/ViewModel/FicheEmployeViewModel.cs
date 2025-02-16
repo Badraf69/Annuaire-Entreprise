@@ -47,7 +47,7 @@ public class FicheEmployeViewModel : INotifyPropertyChanged
             if (isDeleted)
             {
                 MessageBox.Show("Employé supprimé avec succès", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
-                NavigationServiceSingleton.MainFrame.GoBack();
+                NavigationServiceSingleton.Instance.GoBack();
             }
             else
             {

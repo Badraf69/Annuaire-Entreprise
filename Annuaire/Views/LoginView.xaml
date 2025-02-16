@@ -5,29 +5,38 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:Annuaire"
       mc:Ignorable="d"
-      Title="LoginView" Height="450" Width="800">
+      Title="LoginView" Height="450" Width="800" >
+
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2"/>
-            <ColumnDefinition Width="3"/>
-            
-        </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="250">
-            <TextBlock Text="Page de Login" FontSize="20" FontWeight="Bold" Margin="0,0,0,20"/>
-            
-            <TextBlock Text="Identifiant:"/>
-            <TextBox Name="txtUsername" Width="200" Margin="0,5,0,10"/>
-            
-            <TextBlock Text="Mot de pass :"/>
-            <TextBox Name="txtPassword" Width="200" Margin="0,5,0,10"/>
-            
-        </StackPanel>
-            <Label Content="Page de Login" Grid.Row="0"/>
-            <Label Content="Nom d'utilisateur : " Grid.Row="1" Margin="0,50,0,10"/>
-            <TextBox x:Name="UsernameTextBox" Width="200" Grid.Row="1" Margin="50,50,0,10"/>
-            <Label Content="Mot de Passe : " Grid.Row="2"/>
-            <PasswordBox x:Name="PassWordTextBox" Width="200" Grid.Row="2" Margin="50,0,0,10"/>
-            <Label Content="" Grid.Row="3"/>
-            <Button Content="Envoyer" Width="100" Grid.Row="4" Margin="50,0,0,10" />
+       <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
+           <Label HorizontalAlignment="Center" FontSize="24" FontWeight="Bold" Margin="0,20,0,10">Page de connexion</Label>
+           <Label HorizontalAlignment="Center" Margin="0,50,0,0" FontWeight="Bold" > IDENTIFIANT</Label>
+           <TextBlock > test</TextBlock>
+           <TextBox BorderBrush="Blue" BorderThickness="2"> est</TextBox>
+       </StackPanel>
     </Grid>
 </Page>
+
+
+<!-- <Grid.ColumnDefinitions> -->
+<!--     <ColumnDefinition Width="2"/> -->
+<!--     <ColumnDefinition Width="3"/> -->
+<!--              -->
+<!-- </Grid.ColumnDefinitions> -->
+<!-- <StackPanel Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="250"> -->
+<!--     <TextBlock Text="Page de Login" FontSize="20" FontWeight="Bold" Margin="0,0,0,20"/> -->
+<!--              -->
+<!--     <TextBlock Text="Identifiant:"/> -->
+<!--     <TextBox Name="txtUsername" Width="200" Margin="0,5,0,10"/> -->
+<!--              -->
+<!--     <TextBlock Text="Mot de pass :"/> -->
+<!--     <TextBox Name="txtPassword" Width="200" Margin="0,5,0,10"/> -->
+<!--              -->
+<!-- </StackPanel> -->
+<!-- <Label Content="Page de Login" Grid.Row="0"/> -->
+<!-- <Label Content="Nom d'utilisateur : " Grid.Row="1" Margin="0,50,0,10"/> -->
+<!-- <TextBox x:Name="UsernameTextBox" Width="200" Grid.Row="1" Margin="50,50,0,10"/> -->
+<!-- <Label Content="Mot de Passe : " Grid.Row="2"/> -->
+<!-- <PasswordBox x:Name="PassWordTextBox" Width="200" Grid.Row="2" Margin="50,0,0,10"/> -->
+<!-- <Label Content="" Grid.Row="3"/> -->
+<!-- <Button Content="Envoyer" Width="100" Grid.Row="4" Margin="50,0,0,10" /> -->

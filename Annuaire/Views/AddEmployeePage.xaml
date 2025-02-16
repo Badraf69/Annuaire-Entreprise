@@ -31,21 +31,21 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Nom : "  Width="100"/>
-                <TextBox Text="{Binding Employee.LastName, UpdateSourceTrigger=PropertyChanged}"/> 
+                <TextBox Text="{Binding Employee.LastName, UpdateSourceTrigger=PropertyChanged}" Margin="24,3,0,3"/> 
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Prénom : " Width="100"/>
-                <TextBox Text="{Binding Employee.FirstName, UpdateSourceTrigger=PropertyChanged}"/>        
+                <TextBox Text="{Binding Employee.FirstName, UpdateSourceTrigger=PropertyChanged}" Margin="24,3,0,3"/>        
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Email : " Width="100"/>
-                <TextBox Text="{Binding Employee.Email, UpdateSourceTrigger=PropertyChanged}"/>          
+                <TextBox Text="{Binding Employee.Email, UpdateSourceTrigger=PropertyChanged}" Margin="24,3,0,3"/>          
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Téléphone fixe : " Width="100"/>
-                <TextBox Text="{Binding Employee.Phone, UpdateSourceTrigger=PropertyChanged}"/>       
+                <TextBox Text="{Binding Employee.Phone, UpdateSourceTrigger=PropertyChanged}" Margin="24,3,0,3"/>       
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
@@ -57,11 +57,11 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Service : "  Width="100"/>
-                <ComboBox ItemsSource="{Binding Services}"  SelectedValue="{Binding Employee.ServiceId}" DisplayMemberPath="ServiceName" SelectedValuePath="Id" Width="150"></ComboBox>
+                <ComboBox ItemsSource="{Binding Services}"  SelectedValue="{Binding Employee.ServiceId}" DisplayMemberPath="ServiceName" SelectedValuePath="Id" Width="150" Margin="24,4,0,4"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Site : " Width="100"/>
-                <ComboBox ItemsSource="{Binding Sites}"  SelectedValue="{Binding Employee.SiteId}" DisplayMemberPath="Ville" SelectedValuePath="Id" Width="150"></ComboBox>
+                <ComboBox ItemsSource="{Binding Sites}"  SelectedValue="{Binding Employee.SiteId}" DisplayMemberPath="Ville" SelectedValuePath="Id" Width="150" Margin="24,4,0,4"/>
             </StackPanel>
         </StackPanel>
         

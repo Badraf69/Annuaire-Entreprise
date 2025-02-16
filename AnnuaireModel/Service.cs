@@ -14,5 +14,6 @@ namespace AnnuaireModel
             ServiceName = serviceName;
 
         }
+        public Service(){}
     }
 }

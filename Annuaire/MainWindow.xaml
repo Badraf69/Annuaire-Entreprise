@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Annuaire"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        Title="Annuaire Employés" Height="700" Width="900"
+        WindowState="Maximized"
+        WindowStyle="ToolWindow"
         KeyDown="KonamiCode"
         >
     <Grid>
