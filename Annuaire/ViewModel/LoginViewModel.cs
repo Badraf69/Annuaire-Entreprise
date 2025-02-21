@@ -1,6 +1,11 @@
-﻿namespace Annuaire.Views;
+﻿using System.Windows;
+using System.Windows.Input;
 
-public class LoginViewModel
+namespace Annuaire.Views;
+
+public class LoginViewModel 
 {
     
+
+
 }
