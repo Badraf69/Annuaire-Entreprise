@@ -29,7 +29,9 @@
         
         <!--Colonne Employé-->
         <StackPanel Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Margin="0,50,0,0">
-            <Button Content="Liste Employés"  Style="{StaticResource Btn_menu}"/>
+            <Button Content="Liste Employés"  
+                    Style="{StaticResource Btn_menu}"
+                    Command="{Binding NavigateToListEmployeeCommand}"/>
             <Button Content="Ajout Employé"  
                     Style="{StaticResource Btn_menu}"
                     />
@@ -37,7 +39,9 @@
         
         <!--Colonne Site-->
         <StackPanel Grid.Row="1" Grid.Column="1" Margin="0,50,0,0">
-            <Button Content="Liste Sites"  Style="{StaticResource Btn_menu}"/>
+            <Button Content="Liste Sites"  
+                    Style="{StaticResource Btn_menu}"
+                    Command="{Binding NavigateToListSiteCommand}"/>
             <Button Content="Ajout Site"  
                     Style="{StaticResource Btn_menu}"
                     />
@@ -45,10 +49,15 @@
         
         <!--Colonne Service-->
         <StackPanel Grid.Row="1" Grid.Column="2" Margin="0,50,0,0">
-            <Button Content="Liste Services"  Style="{StaticResource Btn_menu}"/> 
+            <Button Content="Liste Services"  
+                    Style="{StaticResource Btn_menu}"
+                    Command="{Binding NavigateToListServiceCommand}"/> 
             <Button Content="Ajout Service"  
                     Style="{StaticResource Btn_menu}"
-                    Click="OnAddServiceButtonClicked"/>
+                    Click="OnAddServiceButtonClicked"
+                    />
+            <Button Content="ajout utilisateur"
+                    Command="{Binding addUserCommand}"></Button>
         </StackPanel>
     </Grid>
 </Page>

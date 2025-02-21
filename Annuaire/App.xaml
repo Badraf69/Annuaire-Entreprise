@@ -82,5 +82,84 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+        
+        <!--Style input base -->
+        <Style x:Key="input" TargetType="TextBox">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="Gray"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="White"
+                                CornerRadius="5"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                Width="150"
+                                Height="30">
+                            <ScrollViewer x:Name="PART_ContentHost"
+                                          />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <!--Style ComboBox -->
+        <Style x:Key="inputComboBox" TargetType="ComboBox">
+    <Setter Property="Background" Value="Transparent"/>
+    <Setter Property="BorderThickness" Value="1"/>
+    <Setter Property="BorderBrush" Value="Gray"/>
+    <Setter Property="Padding" Value="5"/>
+    <Setter Property="Template">
+        <Setter.Value>
+            <ControlTemplate TargetType="ComboBox">
+                <Grid>
+                    <Border Background="White"
+                            CornerRadius="5"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            Width="150"
+                            Height="30">
+                        <DockPanel>
+                            <ContentPresenter VerticalAlignment="Center"
+                                              Margin="5"
+                                              Content="{TemplateBinding SelectionBoxItem}"/>
+                            <ToggleButton DockPanel.Dock="Right"
+                                          Focusable="False"
+                                          Background="Transparent"
+                                          BorderThickness="0"
+                                          IsChecked="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
+                                <Grid Width="30" Height="30">
+                                    <Polygon Points="5,10 15,20 25,10"
+                                             Fill="Gray"
+                                             HorizontalAlignment="Left"
+                                             VerticalAlignment="Center"/>
+                                </Grid>
+                            </ToggleButton>
+                        </DockPanel>
+                    </Border>
+                    <Popup IsOpen="{TemplateBinding IsDropDownOpen}"
+                           Placement="Bottom"
+                           Width="{TemplateBinding ActualWidth}"
+                           AllowsTransparency="True"
+                           Focusable="False"
+                           PopupAnimation="Slide">
+                        <Border Background="White"
+                                BorderBrush="Gray"
+                                BorderThickness="1"
+                                CornerRadius="5">
+                            <ScrollViewer MaxHeight="200">
+                                <ItemsPresenter/>
+                            </ScrollViewer>
+                        </Border>
+                    </Popup>
+                </Grid>
+            </ControlTemplate>
+        </Setter.Value>
+    </Setter>
+</Style>
+        
     </Application.Resources>
 </Application>

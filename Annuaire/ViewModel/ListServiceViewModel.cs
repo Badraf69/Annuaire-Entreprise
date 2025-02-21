@@ -24,9 +24,9 @@ public class ListServiceViewModel : INotifyPropertyChanged
 
         
     }
-    public event Action OnNavigateToListEmployee;
-    public event Action OnNavigateToListSite;
-    public event Action OnNavigateToMenu;
+    // public event Action OnNavigateToListEmployee;
+    // public event Action OnNavigateToListSite;
+    // public event Action OnNavigateToMenu;
     public event PropertyChangedEventHandler PropertyChanged;
     
     public ObservableCollection<Service> Services
