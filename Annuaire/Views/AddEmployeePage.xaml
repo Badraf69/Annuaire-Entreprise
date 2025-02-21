@@ -85,53 +85,6 @@
         </StackPanel>
         
         
-        
-        
-        
-        
-        
-        
-        
-        <!-- <StackPanel Grid.Row="1" HorizontalAlignment="Left" Margin="20"> -->
-        <!--     <StackPanel Orientation="Horizontal"> -->
-        <!--         <TextBlock Text="Information personnelle : " FontFamily="Arial" Width="150" TextDecorations="Underline" LineHeight="20"/> -->
-        <!--     </StackPanel> -->
-        <!--     <StackPanel Orientation="Horizontal"> -->
-        <!--         <TextBlock Text="Nom : "  Width="100"/> -->
-        <!--         <TextBox Text="{Binding Employee.LastName, UpdateSourceTrigger=PropertyChanged}" Margin="24,3,0,3"/>  -->
-        <!--     </StackPanel> -->
-        <!--     <StackPanel Orientation="Horizontal"> -->
-        <!--         <TextBlock Text="Prénom : " Width="100"/> -->
-        <!--         <TextBox Text="{Binding Employee.FirstName, UpdateSourceTrigger=PropertyChanged}" Margin="24,3,0,3"/>         -->
-        <!--     </StackPanel> -->
-        <!-- -->
-        <!--     <StackPanel Orientation="Horizontal"> -->
-        <!--         <TextBlock Text="Email : " Width="100"/> -->
-        <!--         <TextBox Text="{Binding Employee.Email, UpdateSourceTrigger=PropertyChanged}" Margin="24,3,0,3"/>           -->
-        <!--     </StackPanel> -->
-        <!-- -->
-        <!--     <StackPanel Orientation="Horizontal"> -->
-        <!--         <TextBlock Text="Téléphone fixe : " Width="100"/> -->
-        <!--         <TextBox Text="{Binding Employee.Phone, UpdateSourceTrigger=PropertyChanged}" Margin="24,3,0,3"/>        -->
-        <!--     </StackPanel> -->
-        <!-- -->
-        <!--     <StackPanel Orientation="Horizontal"> -->
-        <!--         <TextBlock Text="Téléphone Portable : " Width="120"/> -->
-        <!--         <TextBox Text="{Binding Employee.CellPhone, UpdateSourceTrigger=PropertyChanged}"/>         -->
-        <!--     </StackPanel> -->
-        <!--     <StackPanel Orientation="Horizontal"> -->
-        <!--         <TextBlock Text="Information professionnelle : " FontFamily="Arial" Width="150" TextDecorations="Underline" LineHeight="20"/> -->
-        <!--     </StackPanel> -->
-        <!--     <StackPanel Orientation="Horizontal"> -->
-        <!--         <TextBlock Text="Service : "  Width="100"/> -->
-        <!--         <ComboBox ItemsSource="{Binding Services}"  SelectedValue="{Binding Employee.ServiceId}" DisplayMemberPath="ServiceName" SelectedValuePath="Id" Width="150" Margin="24,4,0,4"/> -->
-        <!--     </StackPanel> -->
-        <!--     <StackPanel Orientation="Horizontal"> -->
-        <!--         <TextBlock Text="Site : " Width="100"/> -->
-        <!--         <ComboBox ItemsSource="{Binding Sites}"  SelectedValue="{Binding Employee.SiteId}" DisplayMemberPath="Ville" SelectedValuePath="Id" Width="150" Margin="24,4,0,4"/> -->
-        <!--     </StackPanel> -->
-        <!-- </StackPanel> -->
-        
         <StackPanel Grid.Row="4" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Left" Margin="10">
             <Button Content="Enregistrer" 
                     Command="{Binding AddEmployeeCommand}" 

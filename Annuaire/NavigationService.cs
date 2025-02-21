@@ -2,19 +2,19 @@
 
 namespace Annuaire;
 
-public class NavigationServiceSingleton
+public class NavigationService
 {
-    private static NavigationServiceSingleton _instance;
+    private static NavigationService _instance;
     private static Frame MainFrame { get; set; }
 
-    private  NavigationServiceSingleton () {}
+    private  NavigationService () {}
 
-    public static NavigationServiceSingleton Instance
+    public static NavigationService Instance
     {
         get
         {
             if (_instance == null)
-                _instance = new NavigationServiceSingleton();
+                _instance = new NavigationService();
             return _instance;
         }
     }

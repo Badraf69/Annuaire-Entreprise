@@ -16,6 +16,6 @@ public partial class AddEmployeePage : Page
     {
 
             ListeEmployeePage listEmployeePage = new ListeEmployeePage();
-            NavigationServiceSingleton.Instance.GoBack();
+            Annuaire.NavigationService.Instance.GoBack();
     }
 }

@@ -23,7 +23,7 @@ public partial class LoginView : Page
 
         if (AuthenticateUser(userName, password))
         {
-            NavigationServiceSingleton.Navigate(new MainPage());
+            Annuaire.NavigationService.Navigate(new MainPage());
         }
         else
         {

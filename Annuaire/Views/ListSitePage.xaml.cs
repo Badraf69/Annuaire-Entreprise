@@ -16,6 +16,6 @@ public partial class ListSitePage : Page
     }
     private void BtnRetour_Click(object sender, RoutedEventArgs e)
     {
-        NavigationServiceSingleton.Instance.GoBack();
+        Annuaire.NavigationService.Instance.GoBack();
     }
 }

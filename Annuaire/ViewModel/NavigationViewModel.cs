@@ -20,21 +20,21 @@ public class NavigationViewModel
     }
     private void NavigateToListEmployee()
     {
-        NavigationServiceSingleton.Navigate(new ListeEmployeePage());
+        NavigationService.Navigate(new ListeEmployeePage());
     }
 
     public void NavigateToListSite()
     {
-        NavigationServiceSingleton.Navigate(new ListSitePage());
+        NavigationService.Navigate(new ListSitePage());
     }
 
     public void NavigateToMenu()
     {
-        NavigationServiceSingleton.Navigate(new MainPage());
+        NavigationService.Navigate(new MainPage());
     }
     private void NavigateToListService()
     {
         
-        NavigationServiceSingleton.Navigate(new ListServicePage());
+        NavigationService.Navigate(new ListServicePage());
     }
 }

@@ -91,12 +91,12 @@ public class ListEmployeeViewModel : INotifyPropertyChanged
     {
         if (SelectedEmployee != null)
         {
-            NavigationServiceSingleton.Navigate(new FicheEmployee(_selectedEmployee, _employeeService));
+            NavigationService.Navigate(new FicheEmployee(_selectedEmployee, _employeeService));
         }
     }
     private async Task NavigateToAddEmployee()
     {
-        NavigationServiceSingleton.Navigate(new AddEmployeePage());
+        NavigationService.Navigate(new AddEmployeePage());
     }
 
     private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
