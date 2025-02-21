@@ -11,11 +11,14 @@ namespace Annuaire.Views
     {
         private readonly Service _service;
         private readonly ServiceService _serviceService;
+        
         public MainPage()
         {
             InitializeComponent();
+            DataContext = new MainViewModel();
             _service = new Service();
             _serviceService = new ServiceService();
+            
         }
 
         private void OnAddServiceButtonClicked(object sender, RoutedEventArgs e)

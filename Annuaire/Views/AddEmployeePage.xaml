@@ -3,6 +3,8 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+
       xmlns:local="clr-namespace:Annuaire.Views"
       mc:Ignorable="d"
       Title="AddEmployeePage" Height="450" Width="800">
@@ -16,58 +18,127 @@
 
     <Grid Margin="20">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>  
+            <RowDefinition Height="*"/>  
             <RowDefinition Height="*"/>    
-            <RowDefinition Height="Auto"/>  
+            <RowDefinition Height="*"/>  
+            <RowDefinition Height="*"/> 
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
         
-        <TextBlock Grid.Row="0" Text="Ajouter un employé" 
+        <!--1er Ligne -->
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="3" Text="Ajouter un employé" 
                    FontSize="18" FontWeight="Bold" 
                    HorizontalAlignment="Center" Margin="10"/>
         
-        <StackPanel Grid.Row="1" HorizontalAlignment="Left" Margin="20">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Information personnelle : " FontFamily="Arial" Width="150" TextDecorations="Underline" LineHeight="20"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Nom : "  Width="100"/>
-                <TextBox Text="{Binding Employee.LastName, UpdateSourceTrigger=PropertyChanged}" Margin="24,3,0,3"/> 
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Prénom : " Width="100"/>
-                <TextBox Text="{Binding Employee.FirstName, UpdateSourceTrigger=PropertyChanged}" Margin="24,3,0,3"/>        
-            </StackPanel>
-
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Email : " Width="100"/>
-                <TextBox Text="{Binding Employee.Email, UpdateSourceTrigger=PropertyChanged}" Margin="24,3,0,3"/>          
-            </StackPanel>
-
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Téléphone fixe : " Width="100"/>
-                <TextBox Text="{Binding Employee.Phone, UpdateSourceTrigger=PropertyChanged}" Margin="24,3,0,3"/>       
-            </StackPanel>
-
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Téléphone Portable : " Width="120"/>
-                <TextBox Text="{Binding Employee.CellPhone, UpdateSourceTrigger=PropertyChanged}"/>        
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Information professionnelle : " FontFamily="Arial" Width="150" TextDecorations="Underline" LineHeight="20"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Service : "  Width="100"/>
-                <ComboBox ItemsSource="{Binding Services}"  SelectedValue="{Binding Employee.ServiceId}" DisplayMemberPath="ServiceName" SelectedValuePath="Id" Width="150" Margin="24,4,0,4"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Site : " Width="100"/>
-                <ComboBox ItemsSource="{Binding Sites}"  SelectedValue="{Binding Employee.SiteId}" DisplayMemberPath="Ville" SelectedValuePath="Id" Width="150" Margin="24,4,0,4"/>
-            </StackPanel>
+        <!--2ème Ligne -->
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="3">
+            <TextBlock Text="Nom : "  Width="100"/>
+            <TextBox Text="{Binding Employee.LastName, 
+            UpdateSourceTrigger=PropertyChanged}" 
+                     Margin="24,3,0,3"
+                     Style="{StaticResource input}"/> 
         </StackPanel>
         
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
-            <Button Content="Enregistrer" Command="{Binding AddEmployeeCommand}" Width="100" Margin="5" />
-            <Button Content = "Retour"  Click ="GoBack_Click" Width="100" Margin="5"/>
+        <!--3ème Ligne -->
+        <StackPanel Grid.Row="2" Grid.Column="0">
+            <TextBlock Text="Prénom : " Width="100"/>
+            <TextBox Text="{Binding Employee.FirstName, UpdateSourceTrigger=PropertyChanged}" 
+                     Margin="24,3,0,3"
+                     Style="{StaticResource input}"/>        
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="1">
+            <TextBlock Text="Téléphone fixe : " Width="100"/>
+            <TextBox Text="{Binding Employee.Phone, UpdateSourceTrigger=PropertyChanged}" 
+                     Margin="24,3,0,3"
+                     Style="{StaticResource input}"/>       
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="2">
+            <TextBlock Text="Site : " Width="100"/>
+            <ComboBox ItemsSource="{Binding Sites}"  
+                      SelectedValue="{Binding Employee.SiteId}" 
+                      DisplayMemberPath="Ville" 
+                      SelectedValuePath="Id" 
+                      Width="150" 
+                      Margin="24,4,0,4"
+                      Style="{StaticResource inputComboBox}"/>
+        </StackPanel>
+        <!--4ème Ligne -->
+        <StackPanel Grid.Row="3" Grid.Column="0">
+            <TextBlock Text="Email : " Width="100"/>
+            <TextBox Text="{Binding Employee.Email, UpdateSourceTrigger=PropertyChanged}" 
+                     Margin="24,3,0,3"
+                     Style="{StaticResource input}"/>          
+        </StackPanel>
+        <StackPanel Grid.Row="3" Grid.Column="1">
+            <TextBlock Text="Téléphone Portable : " Width="120"/>
+            <TextBox Text="{Binding Employee.CellPhone, UpdateSourceTrigger=PropertyChanged}"
+                     Style="{StaticResource input}"/>        
+        </StackPanel>
+        <StackPanel Grid.Row="3" Grid.Column="3">
+            <TextBlock Text="Service : "  Width="100"/>
+            <ComboBox ItemsSource="{Binding Services}"  SelectedValue="{Binding Employee.ServiceId}" DisplayMemberPath="ServiceName" SelectedValuePath="Id" Width="150" Margin="24,4,0,4"/>
+        </StackPanel>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <!-- <StackPanel Grid.Row="1" HorizontalAlignment="Left" Margin="20"> -->
+        <!--     <StackPanel Orientation="Horizontal"> -->
+        <!--         <TextBlock Text="Information personnelle : " FontFamily="Arial" Width="150" TextDecorations="Underline" LineHeight="20"/> -->
+        <!--     </StackPanel> -->
+        <!--     <StackPanel Orientation="Horizontal"> -->
+        <!--         <TextBlock Text="Nom : "  Width="100"/> -->
+        <!--         <TextBox Text="{Binding Employee.LastName, UpdateSourceTrigger=PropertyChanged}" Margin="24,3,0,3"/>  -->
+        <!--     </StackPanel> -->
+        <!--     <StackPanel Orientation="Horizontal"> -->
+        <!--         <TextBlock Text="Prénom : " Width="100"/> -->
+        <!--         <TextBox Text="{Binding Employee.FirstName, UpdateSourceTrigger=PropertyChanged}" Margin="24,3,0,3"/>         -->
+        <!--     </StackPanel> -->
+        <!-- -->
+        <!--     <StackPanel Orientation="Horizontal"> -->
+        <!--         <TextBlock Text="Email : " Width="100"/> -->
+        <!--         <TextBox Text="{Binding Employee.Email, UpdateSourceTrigger=PropertyChanged}" Margin="24,3,0,3"/>           -->
+        <!--     </StackPanel> -->
+        <!-- -->
+        <!--     <StackPanel Orientation="Horizontal"> -->
+        <!--         <TextBlock Text="Téléphone fixe : " Width="100"/> -->
+        <!--         <TextBox Text="{Binding Employee.Phone, UpdateSourceTrigger=PropertyChanged}" Margin="24,3,0,3"/>        -->
+        <!--     </StackPanel> -->
+        <!-- -->
+        <!--     <StackPanel Orientation="Horizontal"> -->
+        <!--         <TextBlock Text="Téléphone Portable : " Width="120"/> -->
+        <!--         <TextBox Text="{Binding Employee.CellPhone, UpdateSourceTrigger=PropertyChanged}"/>         -->
+        <!--     </StackPanel> -->
+        <!--     <StackPanel Orientation="Horizontal"> -->
+        <!--         <TextBlock Text="Information professionnelle : " FontFamily="Arial" Width="150" TextDecorations="Underline" LineHeight="20"/> -->
+        <!--     </StackPanel> -->
+        <!--     <StackPanel Orientation="Horizontal"> -->
+        <!--         <TextBlock Text="Service : "  Width="100"/> -->
+        <!--         <ComboBox ItemsSource="{Binding Services}"  SelectedValue="{Binding Employee.ServiceId}" DisplayMemberPath="ServiceName" SelectedValuePath="Id" Width="150" Margin="24,4,0,4"/> -->
+        <!--     </StackPanel> -->
+        <!--     <StackPanel Orientation="Horizontal"> -->
+        <!--         <TextBlock Text="Site : " Width="100"/> -->
+        <!--         <ComboBox ItemsSource="{Binding Sites}"  SelectedValue="{Binding Employee.SiteId}" DisplayMemberPath="Ville" SelectedValuePath="Id" Width="150" Margin="24,4,0,4"/> -->
+        <!--     </StackPanel> -->
+        <!-- </StackPanel> -->
+        
+        <StackPanel Grid.Row="4" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Left" Margin="10">
+            <Button Content="Enregistrer" 
+                    Command="{Binding AddEmployeeCommand}" 
+                    Style="{StaticResource Btn_menu}"/>
+            <Button Content = "Retour"  
+                    Click ="GoBack_Click"
+                    Style="{StaticResource Btn_menu}"/>
         </StackPanel>
         
     </Grid>
