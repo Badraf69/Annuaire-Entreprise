@@ -16,11 +16,10 @@
             <StackPanel VerticalAlignment="Center">
                 <Button Content="Menu" 
                         Command="{Binding NavigateToMenuCommand}" 
-                        Style="{StaticResource buttonNav}" 
-                        Foreground="White"/>
-                <Button Content="Site" Command="{Binding NavigateToListSiteCommand}" Style="{StaticResource buttonNav}" Foreground="White"/>
-                <Button Content="Employé" Command="{Binding NavigateToListEmployeeCommand}" Style="{StaticResource buttonNav}" Foreground="White"/>
-                <Button Click="BtnRetour_Click" Content="Back" Style="{StaticResource buttonNav}" Foreground="White"/>
+                        Style="{StaticResource buttonNav}" />
+                <Button Content="Site" Command="{Binding NavigateToListSiteCommand}" Style="{StaticResource buttonNav}"/>
+                <Button Content="Employé" Command="{Binding NavigateToListEmployeeCommand}" Style="{StaticResource buttonNav}"/>
+                <Button Click="BtnRetour_Click" Content="Back" Style="{StaticResource buttonNav}"/>
 
 
             </StackPanel>
@@ -45,7 +44,7 @@
                     </ComboBox.Items>
                 </ComboBox>
                
-                <Button Content="Ajouter Service" Command="{Binding NavigateToAddEmployeeCommand}" Width="120" BorderThickness="2" BorderBrush="#999190" Margin="0,0,5,0" >
+                <Button Content="Ajouter Service" Command="{Binding NavigateToAddServiceCommand}" Width="120" BorderThickness="2" BorderBrush="#999190" Margin="0,0,5,0" >
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border Background="{TemplateBinding Background}" CornerRadius="10" Padding="{TemplateBinding Padding}">
@@ -56,7 +55,7 @@
                 </Button> 
 
             </StackPanel>
-            <DataGrid Grid.Row="1" x:Name="ServiceDataGrid" ItemsSource="{Binding Services}">
+            <DataGrid Grid.Row="1" x:Name="ServiceDataGrid" ItemsSource="{Binding Services}" AutoGenerateColumns="False">
                 
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Service" Binding="{Binding ServiceName}" Width="100" />

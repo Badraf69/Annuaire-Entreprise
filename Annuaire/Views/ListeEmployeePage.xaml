@@ -6,20 +6,6 @@
       xmlns:local="clr-namespace:Annuaire.Views"
       mc:Ignorable="d"
       Title="ListeEmployeePage" Height="550" Width="900">
-    <!-- <Page.Resources> -->
-    <!--     <Style TargetType="Button"> -->
-    <!--         <Setter Property="Background" Value="LightGray"/> -->
-    <!--         <Setter Property="Foreground" Value="Black"/> -->
-    <!--         <Setter Property="Padding" Value="5"/> -->
-    <!--          -->
-    <!--         <Style.Triggers> -->
-    <!--             <Trigger Property="IsMouseOver" Value="True"> -->
-    <!--                 <Setter Property="Background" Value="SteelBlue"/> -->
-    <!--                 <Setter Property="Foreground" Value="White"/> -->
-    <!--             </Trigger> -->
-    <!--         </Style.Triggers> -->
-    <!--     </Style> -->
-    <!-- </Page.Resources> -->
     
     <Grid>
         <Grid.ColumnDefinitions>
@@ -28,10 +14,10 @@
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="1" >
             <StackPanel VerticalAlignment="Center" >
-                <Button Content="Menu" Command="{Binding NavigateToMenuCommand}" Style="{StaticResource buttonNav}" Foreground="White"/>
-                <Button Content="Site" Command="{Binding NavigateToSiteCommand}" Style="{StaticResource buttonNav}" Foreground="White"/>
-                <Button Content="Service" Command="{Binding NavigateToServiceCommand}" Style="{StaticResource buttonNav}" Foreground="White"/>
-                <Button Click="BtnRetour_Click" Content="Back" Style="{StaticResource buttonNav}" Foreground="White"/>
+                <Button Content="Menu" Command="{Binding NavigateToMenuCommand}" Style="{StaticResource buttonNav}"/>
+                <Button Content="Site" Command="{Binding NavigateToSiteCommand}" Style="{StaticResource buttonNav}"/>
+                <Button Content="Service" Command="{Binding NavigateToServiceCommand}" Style="{StaticResource buttonNav}"/>
+                <Button Click="BtnRetour_Click" Content="Back" Style="{StaticResource buttonNav}"/>
 
             </StackPanel>
         </Grid>

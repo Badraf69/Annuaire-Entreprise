@@ -21,8 +21,9 @@ public class ListServiceViewModel : INotifyPropertyChanged
         NavigateToListEmployeeCommand = App.NavigationVM.NavigateToListEmployeeCommand;
         NavigateToListSiteCommand = App.NavigationVM.NavigateToListSiteCommand;
         NavigateToMenuCommand = App.NavigationVM.NavigateToMenuCommand;
+        NavigateToAddServiceCommand = new RelayCommand(_ => OpenAddServiceWindow());
 
-        
+
     }
     // public event Action OnNavigateToListEmployee;
     // public event Action OnNavigateToListSite;
@@ -42,6 +43,7 @@ public class ListServiceViewModel : INotifyPropertyChanged
     public ICommand NavigateToListEmployeeCommand { get; }
     public ICommand NavigateToListSiteCommand { get; }
     public ICommand NavigateToMenuCommand { get; }
+    public ICommand NavigateToAddServiceCommand { get; set; }
     
     public async void LoadService()
     {
@@ -54,18 +56,13 @@ public class ListServiceViewModel : INotifyPropertyChanged
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
-    // private void NavigateToListEmployee()
-    // {
-    //     NavigationServiceSingleton.Navigate(new ListeEmployeePage());
-    // }
-    //
-    // public void NavigateToListSite()
-    // {
-    //     NavigationServiceSingleton.Navigate(new ListSitePage());
-    // }
-    //
-    // public void NavigateToMenu()
-    // {
-    //     NavigationServiceSingleton.Navigate(new MainPage());
-    // }
+    private void OpenAddServiceWindow()
+    {
+        var window = new AddServiceWindow();
+        bool? result = window.ShowDialog();
+        if (result == true)
+        {
+            string serviceName = window.ServiceName;
+        }
+    }
 }

@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace Annuaire;
 
@@ -38,6 +39,11 @@ public class NavigationService
     public void GoToFirstPage(Page page)
     {
         MainFrame?.Navigate(page);
+    }
+
+    public void OpenWindow(Window window)
+    {
+       window?.ShowDialog();
     }
     
 }

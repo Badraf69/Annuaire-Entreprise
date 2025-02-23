@@ -81,7 +81,13 @@
         </StackPanel>
         <StackPanel Grid.Row="3" Grid.Column="3">
             <TextBlock Text="Service : "  Width="100"/>
-            <ComboBox ItemsSource="{Binding Services}"  SelectedValue="{Binding Employee.ServiceId}" DisplayMemberPath="ServiceName" SelectedValuePath="Id" Width="150" Margin="24,4,0,4"/>
+            <ComboBox ItemsSource="{Binding Services}"  
+                      SelectedValue="{Binding Employee.ServiceId}" 
+                      DisplayMemberPath="ServiceName" 
+                      SelectedValuePath="Id" 
+                      Width="150" 
+                      Margin="24,4,0,4"
+                      Style="{StaticResource inputComboBoxService}"/>
         </StackPanel>
         
         

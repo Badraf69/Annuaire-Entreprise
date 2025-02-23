@@ -60,6 +60,7 @@ public class AddEmployeeViewModel : INotifyPropertyChanged
         if (addedEmployee != null)
         {
             MessageBox.Show("Employé ajouté avec Succès.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            NavigationService.Navigate(new ListeEmployeePage());
 
         }
         

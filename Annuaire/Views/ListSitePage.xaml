@@ -14,10 +14,10 @@
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="1" >
             <StackPanel VerticalAlignment="Center" >
-                <Button Content="Menu" Command="{Binding NavigateToMenuCommand}" Style="{StaticResource buttonNav}" Foreground="White"/>
-                <Button Content="Employé" Command="{Binding NavigateToListEmployeeCommand}" Style="{StaticResource buttonNav}" Foreground="White"/>
-                <Button Content="Service" Command="{Binding NavigateToListServiceCommand}" Style="{StaticResource buttonNav}" Foreground="White"/>
-                <Button Click="BtnRetour_Click" Content="Back" Style="{StaticResource buttonNav}" Foreground="White"/>
+                <Button Content="Menu" Command="{Binding NavigateToMenuCommand}" Style="{StaticResource buttonNav}"/>
+                <Button Content="Employé" Command="{Binding NavigateToListEmployeeCommand}" Style="{StaticResource buttonNav}"/>
+                <Button Content="Service" Command="{Binding NavigateToListServiceCommand}" Style="{StaticResource buttonNav}"/>
+                <Button Click="BtnRetour_Click" Content="Back" Style="{StaticResource buttonNav}"/>
 
             </StackPanel>
         </Grid>
@@ -50,7 +50,7 @@
                 </Button> 
 
             </StackPanel>
-            <DataGrid Grid.Row="1" x:Name="ServiceDataGrid" ItemsSource="{Binding Sites}">
+            <DataGrid Grid.Row="1" x:Name="ServiceDataGrid" ItemsSource="{Binding Sites}" AutoGenerateColumns="False" CanUserAddRows="False">
                 
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Site" Binding="{Binding Ville}" Width="100" />
