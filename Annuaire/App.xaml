@@ -223,6 +223,26 @@
             </Setter.Value>
         </Setter>
     </Style>
-       
+        <!-- Style pour texblock-->
+        <Style x:Key="TextBlockStyle" TargetType="ContentControl">
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBlock">
+                        <Border CornerRadius="5"
+                                BorderBrush="Gray"
+                                BorderThickness="1"
+                                Background="LightGray"
+                                Padding="10">
+                            <ContentPresenter/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </Application.Resources>
 </Application>
