@@ -63,11 +63,12 @@ public class SiteController : ControllerBase
             }
             appContext.Sites.Add(site);
             appContext.SaveChanges();
-            return CreatedAtRoute("GetSite", new { id = site.Id }, site);
+            //return CreatedAtRoute("GetSite", new { id = site.Id }, site);
+            return StatusCode(201, site);
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "erreur lors de l'ajout d'un employe: {Message}", ex.Message);
+            _logger.LogError(ex, "erreur lors de l'ajout d'un site: {Message}", ex.Message);
             return StatusCode(500,$"Erreur interne du serveur: {ex.Message}");
         }
     }

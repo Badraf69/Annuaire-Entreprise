@@ -35,7 +35,7 @@
                     Command="{Binding NavigateToListEmployeeCommand}"/>
             <Button Content="Ajout Employé"  
                     Style="{StaticResource Btn_menu}"
-                    />
+                    Command="{Binding NavigateToAddEmployeeCommand}"/>
         </StackPanel>
         
         <!--Colonne Site-->
@@ -45,6 +45,7 @@
                     Command="{Binding NavigateToListSiteCommand}"/>
             <Button Content="Ajout Site"  
                     Style="{StaticResource Btn_menu}"
+                    Command="{Binding NavigateToAddSiteCommand}"
                     />
         </StackPanel>
         

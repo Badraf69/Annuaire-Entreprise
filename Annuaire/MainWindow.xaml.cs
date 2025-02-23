@@ -28,9 +28,6 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        //NavigationServiceSingleton.MainFrame = MainFrame;
-        //MainFrame.NavigationService.Navigate(new ListeEmployeePage());
-        //NavigationServiceSingleton.Navigate(new LoginView());
         NavigationService.Instance.Initialize(MainFrame);
         NavigationService.Instance.GoToFirstPage(new MainPage());
         this.KeyDown += KonamiCode;

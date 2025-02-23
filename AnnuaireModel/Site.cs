@@ -15,6 +15,7 @@ namespace AnnuaireModel
             Ville = ville;
             Type = type;
         }
+        public Site(){}
 
     }
 }

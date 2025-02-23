@@ -22,6 +22,7 @@ public class ListSiteViewModel :INotifyPropertyChanged
         NavigateToListServiceCommand = App.NavigationVM.NavigateToListServiceCommand;
         NavigateToListEmployeeCommand = App.NavigationVM.NavigateToListEmployeeCommand;
         NavigateToMenuCommand = App.NavigationVM.NavigateToMenuCommand;
+        NavigateToAddSiteCommand = App.NavigationVM.NavigateToAddSiteCommand;
         
         LoadSites();
     }
@@ -43,6 +44,7 @@ public class ListSiteViewModel :INotifyPropertyChanged
     public ICommand NavigateToListServiceCommand { get; set; }
     public ICommand NavigateToListEmployeeCommand { get; set; }
     public ICommand NavigateToMenuCommand { get; set; }
+    public ICommand NavigateToAddSiteCommand { get; set; }
 
     //Fonctions pour les données
     private async void LoadSites()
@@ -50,19 +52,7 @@ public class ListSiteViewModel :INotifyPropertyChanged
         var sites = await _siteService.GetSitesAsync();
         Sites = new ObservableCollection<Site>(sites);
     }
-    
-    //Fonctions pour la navigation 
-    
 
-    // private void NavigateToListEmployee()
-    // {
-    //     
-    //     NavigationServiceSingleton.Navigate(new ListeEmployeePage());
-    // }
-    // public void NavigateToMenu()
-    // {
-    //     NavigationServiceSingleton.Navigate(new MainPage());
-    // }
     
     private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
     {

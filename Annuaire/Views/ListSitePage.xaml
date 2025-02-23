@@ -39,10 +39,17 @@
 
                 </ComboBox>
                
-                <Button Content="Ajouter Site" Command="{Binding NavigateToAddEmployeeCommand}" Width="120" BorderThickness="2" BorderBrush="#999190" Margin="0,0,5,0" >
+                <Button Content="Ajouter Site" 
+                        Command="{Binding NavigateToAddSiteCommand}" 
+                        Width="120" 
+                        BorderThickness="2" 
+                        BorderBrush="#999190" 
+                        Margin="0,0,5,0" >
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
-                            <Border Background="{TemplateBinding Background}" CornerRadius="10" Padding="{TemplateBinding Padding}">
+                            <Border Background="{TemplateBinding Background}" 
+                                    CornerRadius="10" 
+                                    Padding="{TemplateBinding Padding}">
                                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Border>
                         </ControlTemplate>
