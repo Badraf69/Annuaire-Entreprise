@@ -1,8 +1,10 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows;
 using System.Windows.Input;
 using Annuaire.Services;
+using Annuaire.ViewModel;
 using AnnuaireModel;
 
 namespace Annuaire.Views;
@@ -12,10 +14,13 @@ public class ListServiceViewModel : INotifyPropertyChanged
 
     private readonly ServiceService _serviceService;
     private ObservableCollection<Service> _services;
+    private readonly Service _service;
 
-    public ListServiceViewModel(ServiceService serviceService)
+    public ListServiceViewModel(ServiceService serviceService, Service service)
     {
         _serviceService = serviceService;
+        _service = service;
+        
         LoadService();
         Services = new ObservableCollection<Service>();
         NavigateToListEmployeeCommand = App.NavigationVM.NavigateToListEmployeeCommand;
@@ -63,6 +68,14 @@ public class ListServiceViewModel : INotifyPropertyChanged
         if (result == true)
         {
             string serviceName = window.ServiceName;
+            _service.ServiceName = serviceName;
+            var addService =  _serviceService.AddServiceAsync(_service);
+            if (addService != null)
+            {
+                MessageBox.Show("Service ajouté avec Succès.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                NavigationService.Navigate(new ListServicePage());
+
+            }
         }
     }
 }
