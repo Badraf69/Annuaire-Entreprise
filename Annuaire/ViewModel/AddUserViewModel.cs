@@ -36,6 +36,7 @@ public class AddUserViewModel : INotifyPropertyChanged
 
     public async Task AddUser()
     {
+        MessageBox.Show($"nouvelle utilisateur : {User}");
         if (User == null)
         {
             MessageBox.Show("Veuillez entrer des données valides");

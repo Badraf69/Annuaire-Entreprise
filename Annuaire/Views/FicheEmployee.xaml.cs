@@ -9,13 +9,9 @@ namespace Annuaire
 
     public partial class FicheEmployee : Page
     {
-        //private dynamic _selectedEmployee;
-        //dynamic employee
         public FicheEmployee(Employee employee, EmployeeService employeeService)
         {
             InitializeComponent();
-           // _selectedEmployee = employee;
-            //DataContext = _selectedEmployee;
             DataContext = new FicheEmployeViewModel(employee, employeeService);
         }
 

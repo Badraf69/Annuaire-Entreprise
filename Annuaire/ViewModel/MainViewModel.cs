@@ -14,7 +14,8 @@ public class MainViewModel : INotifyPropertyChanged
         //NavigateToAddServiceCommand = App.NavigationVM.NavigateToAddServiceCommand;
         NavigateToListSiteCommand = App.NavigationVM.NavigateToListSiteCommand;
         NavigateToAddSiteCommand = App.NavigationVM.NavigateToAddSiteCommand;
-        
+        NavigateToAddUserCommand = App.NavigationVM.NavigateToAddUserCommand;
+
 
 
     }
@@ -26,6 +27,7 @@ public class MainViewModel : INotifyPropertyChanged
     //public ICommand NavigateToAddServiceCommand { get; }
     public ICommand NavigateToListSiteCommand { get; }
     public ICommand NavigateToAddSiteCommand { get; }
+    public ICommand NavigateToAddUserCommand { get; }
 
 
     private void OnPropertyChanged([CallerMemberName] string? propertyName = null)

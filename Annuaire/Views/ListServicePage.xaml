@@ -44,7 +44,26 @@
                     </ComboBox.Items>
                 </ComboBox>
                
-                <Button Content="Ajouter Service" Command="{Binding NavigateToAddServiceCommand}" Width="120" BorderThickness="2" BorderBrush="#999190" Margin="0,0,5,0" >
+                <Button Content="Ajouter Service" Command="{Binding NavigateToAddServiceCommand}" 
+                        Width="120"
+                        BorderThickness="2"
+                        BorderBrush="#999190"
+                        Margin="0,0,5,0">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" CornerRadius="10" Padding="{TemplateBinding Padding}">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button> 
+                <Button Content="Supprimer Services" 
+                        Command="{Binding DeleteServiceCommand}"
+                        IsEnabled="{Binding SelectedService}"
+                        Width="120"
+                        BorderThickness="2"
+                        BorderBrush="#999190"
+                        Margin="0,0,5,0">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border Background="{TemplateBinding Background}" CornerRadius="10" Padding="{TemplateBinding Padding}">
@@ -55,7 +74,7 @@
                 </Button> 
 
             </StackPanel>
-            <DataGrid Grid.Row="1" x:Name="ServiceDataGrid" ItemsSource="{Binding Services}" AutoGenerateColumns="False">
+            <DataGrid Grid.Row="1" x:Name="ServiceDataGrid" ItemsSource="{Binding Services}" SelectedItem="{Binding SelectedService, Mode=TwoWay}" AutoGenerateColumns="False">
                 
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Service" Binding="{Binding ServiceName}" Width="100" />

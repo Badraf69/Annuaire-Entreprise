@@ -54,6 +54,29 @@ public class ServiceService
             Console.WriteLine(e);
             throw;
         }
+    }
+
+    public async Task<bool> DeleteServiceAsync(int serviceId)
+    {
+        try
+        {
+            var response = await _httpClient.DeleteAsync($"DeleteService/{serviceId}");
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            else
+            {
+                string errorMessage = await response.Content.ReadAsStringAsync();
+                Console.WriteLine("$Erreur de suppresion du service : {errorMessage}");
+                return false;
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
         
     }
 }

@@ -34,17 +34,6 @@
         <TextBlock Grid.Row="0" Grid.ColumnSpan="3" Text="Ajouter un Site" 
                    FontSize="18" FontWeight="Bold" 
                    HorizontalAlignment="Center" Margin="10"/>
-        
-        <!-- ~1~2ème Ligne @1@ -->
-        <!-- <StackPanel Grid.Row="1" Grid.ColumnSpan="3"> -->
-        <!--     <TextBlock Text="Nom : "  Width="100"/> -->
-        <!--     <TextBox Text="{Binding Employee.LastName,  -->
-        <!--     UpdateSourceTrigger=PropertyChanged}"  -->
-        <!--              Margin="24,3,0,3" -->
-        <!--              Style="{StaticResource input}"/>  -->
-        <!-- </StackPanel> -->
-        
-        <!--3ème Ligne -->
         <StackPanel Grid.Row="2" Grid.Column="0">
             <TextBlock Text="Ville : " Width="100"/>
             <TextBox Text="{Binding Site.Ville, UpdateSourceTrigger=PropertyChanged}" 
@@ -57,40 +46,6 @@
                      Margin="24,3,0,3"
                      Style="{StaticResource input}"/>       
         </StackPanel>
-        <!-- <StackPanel Grid.Row="2" Grid.Column="2"> -->
-        <!--     <TextBlock Text="Site : " Width="100"/> -->
-        <!--     <ComboBox ItemsSource="{Binding Sites}"   -->
-        <!--               SelectedValue="{Binding Employee.SiteId}"  -->
-        <!--               DisplayMemberPath="Ville"  -->
-        <!--               SelectedValuePath="Id"  -->
-        <!--               Width="150"  -->
-        <!--               Margin="24,4,0,4" -->
-        <!--               Style="{StaticResource inputComboBox}"/> -->
-        <!-- </StackPanel> -->
-        <!-- ~1~4ème Ligne @1@ -->
-        <!-- <StackPanel Grid.Row="3" Grid.Column="0"> -->
-        <!--     <TextBlock Text="Email : " Width="100"/> -->
-        <!--     <TextBox Text="{Binding Employee.Email, UpdateSourceTrigger=PropertyChanged}"  -->
-        <!--              Margin="24,3,0,3" -->
-        <!--              Style="{StaticResource input}"/>           -->
-        <!-- </StackPanel> -->
-        <!-- <StackPanel Grid.Row="3" Grid.Column="1"> -->
-        <!--     <TextBlock Text="Téléphone Portable : " Width="120"/> -->
-        <!--     <TextBox Text="{Binding Employee.CellPhone, UpdateSourceTrigger=PropertyChanged}" -->
-        <!--              Style="{StaticResource input}"/>         -->
-        <!-- </StackPanel> -->
-        <!-- <StackPanel Grid.Row="3" Grid.Column="3"> -->
-        <!--     <TextBlock Text="Service : "  Width="100"/> -->
-        <!--     <ComboBox ItemsSource="{Binding Services}"   -->
-        <!--               SelectedValue="{Binding Employee.ServiceId}"  -->
-        <!--               DisplayMemberPath="ServiceName"  -->
-        <!--               SelectedValuePath="Id"  -->
-        <!--               Width="150"  -->
-        <!--               Margin="24,4,0,4" -->
-        <!--               Style="{StaticResource inputComboBoxService}"/> -->
-        <!-- </StackPanel> -->
-        
-        
         <StackPanel Grid.Row="4" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
             <Button Content="Enregistrer" 
                     Command="{Binding AddSiteCommand}" 

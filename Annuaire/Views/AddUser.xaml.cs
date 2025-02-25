@@ -12,6 +12,7 @@ public partial class AddUser : Page
     public AddUser()
     {
         InitializeComponent();
+        DataContext = new AddUserViewModel();
         
     }
 
@@ -19,7 +20,8 @@ public partial class AddUser : Page
     {
         string userName = UserNameTextBox.Text;
         string password = PasswordBox.Password;
-
+        
+        
         if (string.IsNullOrWhiteSpace(userName) || string.IsNullOrWhiteSpace(password))
         {
             StatusMessage.Text = "Veuillez remplir tous les champs.";
@@ -28,22 +30,23 @@ public partial class AddUser : Page
         }
 
         
-        var existingUser = _context.Users.SingleOrDefault(u => u.UserName == userName);
-        if (existingUser != null)
-        {
-            StatusMessage.Text = "Cet utilisateur existe déjà.";
-            StatusMessage.Visibility = Visibility.Visible;
-            return;
-        }
+        // var existingUser = _context.Users.SingleOrDefault(u => u.UserName == userName);
+        // if (existingUser != null)
+        // {
+        //     StatusMessage.Text = "Cet utilisateur existe déjà.";
+        //     StatusMessage.Visibility = Visibility.Visible;
+        //     return;
+        // }
 
         
         var newUser = new User { UserName = userName };
         newUser.SetPassword(password); 
-
+        
         _context.Users.Add(newUser);
         _context.SaveChanges();
 
         MessageBox.Show("Utilisateur ajouté avec succès !");
         NavigationService.Navigate(new MainPage()); 
+       
     }
 }

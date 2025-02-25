@@ -64,7 +64,7 @@
         <!-- Dernière ligne-->
         <StackPanel Grid.Row="2" Grid.ColumnSpan="3" Margin="0,50,0,0">
             <Button Content="ajout utilisateur"
-                    Command="{Binding addUserCommand}"
+                    Command="{Binding NavigateToAddUserCommand}"
                     Style="{StaticResource Btn_menu}"
                     />
         </StackPanel>

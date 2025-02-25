@@ -36,11 +36,6 @@ public class ListEmployeeViewModel : INotifyPropertyChanged
         
     }
     
-    // public event Action OnNavigateToFicheEmployee;
-    // public event Action OnNavigateToAddEmployeeCommand;
-    // public event Action OnNavigateToService;
-    // public event Action OnNavigateToSiteCommand;
-    // public event Action OnNavigateToMenuCommand;
     public event PropertyChangedEventHandler? PropertyChanged;
     
     public ObservableCollection<Employee> Employees
@@ -64,7 +59,6 @@ public class ListEmployeeViewModel : INotifyPropertyChanged
     }
     
     public ICommand NavigateToFicheEmployeeCommand { get; }
-    //public ICommand LoadEmployeesCommand { get; }
     public ICommand NavigateToAddEmployeeCommand { get; }
     public ICommand NavigateToServiceCommand { get; }
     public ICommand NavigateToSiteCommand { get; }
@@ -103,20 +97,6 @@ public class ListEmployeeViewModel : INotifyPropertyChanged
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
-
-    // private async Task NavigateToService()
-    // {
-    //     NavigationServiceSingleton.Navigate(new ListServicePage());
-    // }
-    //
-    // private async Task NavigateToSite()
-    // {
-    //     NavigationServiceSingleton.Navigate(new ListSitePage());
-    // }
-    // public void NavigateToMenu()
-    // {
-    //     NavigationServiceSingleton.Navigate(new MainPage());
-    // }
     private async void Service()
     {
         var services = await _serviceService.GetServicesAsync();

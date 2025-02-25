@@ -59,8 +59,8 @@ public class ServiceController : ControllerBase
     }
     
     //Route API pour supprimer un service via son id
-    [HttpDelete("Delete[controller]ById/{id}", Name = "DeleteServiceById")]
-    public IActionResult DeleteServiceById(int id)
+    [HttpDelete("Delete[controller]/{id}", Name = "DeleteService")]
+    public IActionResult DeleteService(int id)
     {
         try
         {

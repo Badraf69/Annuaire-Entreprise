@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using Annuaire.Services;
 using AnnuaireModel;
@@ -20,6 +21,8 @@ public class FicheEmployeViewModel : INotifyPropertyChanged
         _employeeService = employeeService;
         Employee = employee;
         SupprimerCommand = new RelayCommand(async _ => await SupprimerEmploye(), _ => Employee != null);
+        NavigateToListEmployeeCommand = App.NavigationVM.NavigateToListEmployeeCommand;
+        
         
     }
 
@@ -33,21 +36,23 @@ public class FicheEmployeViewModel : INotifyPropertyChanged
         }
     }
     public ICommand SupprimerCommand { get; }
+    public ICommand NavigateToListEmployeeCommand { get; }
     private async Task SupprimerEmploye()
     {
         if (_employeeService == null) return;
         var result = MessageBox.Show(
-            "Voulez-vous vraiment supprimer cert employé ?",
+            "Voulez-vous vraiment supprimer l'employé ?",
             "Confirmation",
             MessageBoxButton.YesNo,
-            MessageBoxImage.Warning);
+            MessageBoxImage.Question);
         if (result == MessageBoxResult.Yes)
         {
             bool isDeleted = await _employeeService.DeleteEmployeeAsync(Employee.Id);
             if (isDeleted)
             {
                 MessageBox.Show("Employé supprimé avec succès", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
-                NavigationService.Instance.GoBack();
+                NavigationService.Navigate(new ListeEmployeePage());
+                
             }
             else
             {

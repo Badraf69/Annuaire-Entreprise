@@ -14,7 +14,8 @@ public class ListServiceViewModel : INotifyPropertyChanged
 
     private readonly ServiceService _serviceService;
     private ObservableCollection<Service> _services;
-    private readonly Service _service;
+    private  Service _service;
+    private Service _selectedService;
 
     public ListServiceViewModel(ServiceService serviceService, Service service)
     {
@@ -27,12 +28,13 @@ public class ListServiceViewModel : INotifyPropertyChanged
         NavigateToListSiteCommand = App.NavigationVM.NavigateToListSiteCommand;
         NavigateToMenuCommand = App.NavigationVM.NavigateToMenuCommand;
         NavigateToAddServiceCommand = new RelayCommand(_ => OpenAddServiceWindow());
-
+        DeleteServiceCommand = new AsyncRelayCommand(
+            async () => await DeleteService(),
+            () => SelectedService != null
+        );
 
     }
-    // public event Action OnNavigateToListEmployee;
-    // public event Action OnNavigateToListSite;
-    // public event Action OnNavigateToMenu;
+
     public event PropertyChangedEventHandler PropertyChanged;
     
     public ObservableCollection<Service> Services
@@ -44,11 +46,34 @@ public class ListServiceViewModel : INotifyPropertyChanged
             OnPropertyChanged();
         }
     }
+
+    public Service Service
+    {
+        get => _service;
+        set
+        {
+            _service = value;
+            OnPropertyChanged();
+            
+        }
+    }
+
+    public Service SelectedService
+    {
+        get => _selectedService;
+        set
+        {
+            _selectedService = value;
+            OnPropertyChanged();
+            ((AsyncRelayCommand)DeleteServiceCommand).RaiseCanExecuteChanged();
+        }
+    }
     
     public ICommand NavigateToListEmployeeCommand { get; }
     public ICommand NavigateToListSiteCommand { get; }
     public ICommand NavigateToMenuCommand { get; }
     public ICommand NavigateToAddServiceCommand { get; set; }
+    public ICommand DeleteServiceCommand { get; set; }
     
     public async void LoadService()
     {
@@ -77,5 +102,32 @@ public class ListServiceViewModel : INotifyPropertyChanged
 
             }
         }
+    }
+    private async Task DeleteService()
+    {
+        if (SelectedService == null) return;
+        var result = MessageBox.Show($"Voulez-vous vraiment supprimer '{SelectedService.ServiceName}?", 
+            "Confirmation", 
+            MessageBoxButton.YesNo, 
+            MessageBoxImage.Question);
+        if (result == MessageBoxResult.Yes)
+        {
+            bool isDeleted = await _serviceService.DeleteServiceAsync(SelectedService.Id);
+            if (isDeleted)
+            {
+                MessageBox.Show("Service supprimé avec succès", "Success", 
+                    MessageBoxButton.OK, 
+                    MessageBoxImage.Information);
+                Services.Remove(SelectedService);
+                SelectedService = null;
+            }
+            else
+            {
+                MessageBox.Show("Erreur lors de la suppression d'un service", "Error", 
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            }
+        }
+
     }
 }

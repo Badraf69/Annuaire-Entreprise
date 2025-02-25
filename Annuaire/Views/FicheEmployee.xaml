@@ -127,9 +127,15 @@
             <!-- <Button Content="Enregistrer"  -->
             <!--         Command="{Binding AddEmployeeCommand}"  -->
             <!--         Style="{StaticResource Btn_menu}"/> -->
+            <Button Content="Modifier"
+                    Command="{Binding ModifierCommand}"
+                    Style="{StaticResource Btn_menu}" Background="Blue"/>
             <Button Content = "Retour"
                     Click ="GoBack_Click"
                     Style="{StaticResource Btn_menu}"/>
+            <Button Content="Supprimer"
+                    Command="{Binding SupprimerCommand}"
+                    Style="{StaticResource Btn_menu}" Background="Red"/>
         </StackPanel>
         
         

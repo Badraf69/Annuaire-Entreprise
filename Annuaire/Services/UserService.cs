@@ -1,5 +1,6 @@
 ﻿using System.Net.Http;
 using System.Net.Http.Json;
+using System.Windows;
 using AnnuaireModel;
 
 namespace Annuaire.Services;
@@ -18,6 +19,8 @@ public class UserService
     {
         try
         {
+            User newUser = user;
+            MessageBox.Show($"nouvelle utilisateur : {newUser}");
             
             var response = await _httpClient.PostAsJsonAsync($"AddUser", user);
             if (response.IsSuccessStatusCode)

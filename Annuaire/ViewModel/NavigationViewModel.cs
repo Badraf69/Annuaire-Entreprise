@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using Annuaire.ViewModel;
 
@@ -12,6 +13,9 @@ public class NavigationViewModel
     public ICommand NavigateToListEmployeeCommand { get; set; }
     public ICommand NavigateToAddSiteCommand { get; set; }
     public ICommand NavigateToAddEmployeeCommand { get; set; }
+    public ICommand NavigateToAddUserCommand { get; set; }
+    public ICommand NavigateToUpdateEmployeesCommand { get; set; }
+    
 
     public NavigationViewModel()
     {
@@ -21,6 +25,9 @@ public class NavigationViewModel
         NavigateToListServiceCommand = new RelayCommand(_ => NavigateToListService());
         NavigateToAddSiteCommand = new RelayCommand(_ => NavigateToAddSite());
         NavigateToAddEmployeeCommand = new RelayCommand(_ => NavigateToAddEmployee());
+        NavigateToAddUserCommand = new RelayCommand(_ => NavigateToAddUser());
+        NavigateToUpdateEmployeesCommand = new RelayCommand(_ => NavigateToUpdateEmployee());
+
 
     }
     private void NavigateToListEmployee()
@@ -51,5 +58,15 @@ public class NavigationViewModel
     public void NavigateToAddEmployee()
     {
         NavigationService.Navigate(new AddEmployeePage());
+    }
+
+    public void NavigateToAddUser()
+    {
+        NavigationService.Navigate(new AddUser());
+    }
+
+    public void NavigateToUpdateEmployee()
+    {
+        NavigationService.Navigate(new UpdateEmployeePage());
     }
 }
