@@ -74,7 +74,7 @@ public class SiteController : ControllerBase
     }
     
     // Route API pour supprimer un site via son id
-    [HttpDelete("Delete[controller]", Name = "DeleteSite")]
+    [HttpDelete("Delete[controller]/{id}", Name = "DeleteSite")]
     public IActionResult DeleteSite(int id)
     {
         try

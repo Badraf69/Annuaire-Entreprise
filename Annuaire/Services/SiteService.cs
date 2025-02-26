@@ -46,4 +46,27 @@ public class SiteService
 
         return null;
     }
+    public async Task<bool> DeleteSiteAsync(int serviceId)
+    {
+        try
+        {
+            var response = await _httpClient.DeleteAsync($"DeleteSite/{serviceId}");
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            else
+            {
+                string errorMessage = await response.Content.ReadAsStringAsync();
+                Console.WriteLine("$Erreur de suppresion du site : {errorMessage}");
+                return false;
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+        
+    }
 }
