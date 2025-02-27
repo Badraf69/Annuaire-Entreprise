@@ -46,20 +46,26 @@ public class SiteService
 
         return null;
     }
-    public async Task<bool> DeleteSiteAsync(int serviceId)
+    public async Task<int> DeleteSiteAsync(int serviceId)
     {
         try
         {
             var response = await _httpClient.DeleteAsync($"DeleteSite/{serviceId}");
             if (response.IsSuccessStatusCode)
             {
-                return true;
+                return (int)response.StatusCode;
             }
             else
             {
                 string errorMessage = await response.Content.ReadAsStringAsync();
-                Console.WriteLine("$Erreur de suppresion du site : {errorMessage}");
-                return false;
+                if (errorMessage.Contains("SQLite Error 19"))
+                {
+                    int result = 600;
+                    return result;
+                }
+                
+                Console.WriteLine($"$Erreur de suppresion du site : {errorMessage}");
+                return (int)response.StatusCode;
             }
         }
         catch (Exception e)
@@ -67,6 +73,15 @@ public class SiteService
             Console.WriteLine(e);
             throw;
         }
+        
+    }
+
+    public async Task<Site> getSiteByIdAsync(int serviceId)
+    {
+        var response = await _httpClient.GetAsync($"GetSiteById/{serviceId}");
+        response.EnsureSuccessStatusCode();
+        var json = await response.Content.ReadAsStringAsync();
+        return JsonSerializer.Deserialize<Site>(json, new JsonSerializerOptions{ PropertyNameCaseInsensitive = true });
         
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices.JavaScript;
 using System.Security.Cryptography.Pkcs;
 using System.Windows;
 using System.Windows.Input;
@@ -77,14 +78,16 @@ public class ListSiteViewModel :INotifyPropertyChanged
     private async Task DeleteSite()
     {
         if(SelectedSite == null) return;
+
         var result = MessageBox.Show($"Voulez-vous vraiment supprimer '{SelectedSite.Ville}?", 
             "Confirmation", 
             MessageBoxButton.YesNo, 
             MessageBoxImage.Question);
         if (result == MessageBoxResult.Yes)
         {
-            bool isDeleted = await _siteService.DeleteSiteAsync(SelectedSite.Id);
-            if (isDeleted)
+            
+            int isDeleted = await _siteService.DeleteSiteAsync(SelectedSite.Id);
+            if (new []{200,201,204}.Contains(isDeleted))
             {
                 MessageBox.Show("Site supprimé avec succès", "Success", 
                     MessageBoxButton.OK, 
@@ -92,11 +95,14 @@ public class ListSiteViewModel :INotifyPropertyChanged
                 Sites.Remove(SelectedSite);
                 SelectedSite = null;
             }
+            else if (isDeleted==600)
+            {
+                MessageBox.Show($"Suppression impossible au moins 1 employe occupe ce site", "Erreur", MessageBoxButton.OK);
+            }
             else
             {
-                MessageBox.Show("Erreur lors de la suppression d'un site", "Error", 
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Error);
+                MessageBox.Show($"Erreur lors de la suppression d'un site : ", "Error", 
+                    MessageBoxButton.OK);
             }
         }
     }

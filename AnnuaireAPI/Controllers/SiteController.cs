@@ -1,6 +1,7 @@
 ﻿using AnnuaireModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 namespace AnnuaireAPI.Controllers;
@@ -90,7 +91,12 @@ public class SiteController : ControllerBase
         }
         catch (Exception ex)
         {
+            if (ex.InnerException.Message == "SQLite Error 19: 'FOREIGN KEY constraint failed'.")
+            {
+                return StatusCode(501,new {message = ex.InnerException.Message});
+            }
             _logger.LogError(ex, "erreur lors du DeleteSite: {Message}", ex.Message);
+            Console.WriteLine($"{ex.InnerException.Message}: ");
             return StatusCode(500,$"Erreur interne du serveur: {ex.Message}");
         }
     }
