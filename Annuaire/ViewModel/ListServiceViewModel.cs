@@ -112,8 +112,8 @@ public class ListServiceViewModel : INotifyPropertyChanged
             MessageBoxImage.Question);
         if (result == MessageBoxResult.Yes)
         {
-            bool isDeleted = await _serviceService.DeleteServiceAsync(SelectedService.Id);
-            if (isDeleted)
+            int isDeleted = await _serviceService.DeleteServiceAsync(SelectedService.Id);
+            if (new []{200,201,204}.Contains(isDeleted))
             {
                 MessageBox.Show("Service supprimé avec succès", "Success", 
                     MessageBoxButton.OK, 
@@ -123,9 +123,17 @@ public class ListServiceViewModel : INotifyPropertyChanged
             }
             else
             {
-                MessageBox.Show("Erreur lors de la suppression d'un service", "Error", 
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Error);
+                if (isDeleted==501)
+                {
+                    MessageBox.Show($"Suppression impossible au moins 1 employe occupe ce service", "Erreur", MessageBoxButton.OK);
+
+                }
+                else
+                {
+                    MessageBox.Show("Erreur lors de la suppression d'un service", "Error",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Error);
+                }
             }
         }
 

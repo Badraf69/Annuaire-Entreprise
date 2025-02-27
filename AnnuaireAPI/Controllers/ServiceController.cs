@@ -65,7 +65,7 @@ public class ServiceController : ControllerBase
         try
         {
             var service = appContext.Services
-                .Find(id);
+                .FirstOrDefault(s=>s.Id == id);
             if (service == null)
             {
                 return NotFound(new { message = "Service not found." });
@@ -76,6 +76,10 @@ public class ServiceController : ControllerBase
         }
         catch (Exception ex)
         {
+            if (ex.InnerException.Message == "SQLite Error 19: 'FOREIGN KEY constraint failed'.")
+            {
+                return StatusCode(501,new {message = ex.InnerException.Message});
+            }
             _logger.LogError(ex, "erreur lors du DeleteService: {Message}", ex.Message);
             return StatusCode(500,$"Erreur interne du serveur: {ex.Message}");
         }

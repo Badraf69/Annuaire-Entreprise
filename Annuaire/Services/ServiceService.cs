@@ -56,20 +56,26 @@ public class ServiceService
         }
     }
 
-    public async Task<bool> DeleteServiceAsync(int serviceId)
+    public async Task<int> DeleteServiceAsync(int serviceId)
     {
         try
         {
             var response = await _httpClient.DeleteAsync($"DeleteService/{serviceId}");
             if (response.IsSuccessStatusCode)
             {
-                return true;
+                return (int)response.StatusCode;
             }
             else
             {
-                string errorMessage = await response.Content.ReadAsStringAsync();
-                Console.WriteLine("$Erreur de suppresion du service : {errorMessage}");
-                return false;
+                string error = await response.Content.ReadAsStringAsync();
+                Console.WriteLine((int)response.StatusCode);
+                if((int)response.StatusCode==501)
+                {
+                    return (int)501;
+                }
+                
+                Console.WriteLine($"$Erreur lors de la suppression du service : {error}");
+                return (int)response.StatusCode;
             }
         }
         catch (Exception e)
