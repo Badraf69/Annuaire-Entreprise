@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:Annuaire.Views"
       mc:Ignorable="d"
-      Title="MainPage" Height="450" Width="800">
+      Title="MainPage" >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>  
@@ -62,11 +62,17 @@
         </StackPanel>
         
         <!-- Dernière ligne-->
-        <StackPanel Grid.Row="2" Grid.ColumnSpan="3" Margin="0,50,0,0">
-            <Button Content="ajout utilisateur"
+        <StackPanel Grid.Row="2" Grid.ColumnSpan="1" Margin="0,50,0,0">
+            <Button Content="Ajout utilisateur"
                     Command="{Binding NavigateToAddUserCommand}"
                     Style="{StaticResource Btn_menu}"
                     />
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.ColumnSpan="3" Margin="0,50,0,0">
+            <Button Content="Liste utilisateur"
+                    Command="{Binding NavigateToListUserCommand}"
+                    Style="{StaticResource Btn_menu}"
+            />
         </StackPanel>
         
     </Grid>

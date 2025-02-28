@@ -138,57 +138,5 @@
                     Style="{StaticResource Btn_menu}" Background="Red"/>
         </StackPanel>
         
-        
-        
-        <!-- <TextBlock Grid.Row="0" Text="{Binding LastName}" -->
-        <!--            FontSize="18" FontWeight="Bold" -->
-        <!--            HorizontalAlignment="Center" Margin="10"/> -->
-        <!-- -->
-        <!-- <StackPanel Grid.Row="1" HorizontalAlignment="Left" Margin="20"> -->
-        <!--     <StackPanel Orientation="Horizontal"> -->
-        <!--         <TextBlock Text="Information personnelle : " FontFamily="Arial" Width="150" TextDecorations="Underline" LineHeight="20"/> -->
-        <!--     </StackPanel> -->
-        <!--     <StackPanel Orientation="Horizontal"> -->
-        <!--         <TextBlock Text="Nom : "  Width="100"/> -->
-        <!--         <TextBlock Text="{Binding Employee.LastName}" LineHeight="20" FontWeight="Bold"/> -->
-        <!--     </StackPanel> -->
-        <!--     <StackPanel Orientation="Horizontal"> -->
-        <!--         <TextBlock Text="Prénom : " Width="100"/> -->
-        <!--         <TextBlock Text="{Binding  Employee.FirstName}" LineHeight="20" FontWeight="Bold" /> -->
-        <!--     </StackPanel> -->
-        <!-- -->
-        <!--     <StackPanel Orientation="Horizontal"> -->
-        <!--         <TextBlock Text="Email : " Width="100"/> -->
-        <!--         <TextBlock Text="{Binding Employee.Email}" LineHeight="20" FontWeight="Bold" /> -->
-        <!--     </StackPanel> -->
-        <!-- -->
-        <!--     <StackPanel Orientation="Horizontal"> -->
-        <!--         <TextBlock Text="Téléphone fixe : " Width="100"/> -->
-        <!--         <TextBlock Text="{Binding Employee.Phone}" LineHeight="20" FontWeight="Bold" /> -->
-        <!--     </StackPanel> -->
-        <!-- -->
-        <!--     <StackPanel Orientation="Horizontal"> -->
-        <!--         <TextBlock Text="Téléphone Portable : " Width="120"/> -->
-        <!--         <TextBlock Text="{Binding Employee.CellPhone}" LineHeight="20" FontWeight="Bold" /> -->
-        <!--     </StackPanel> -->
-        <!--     <StackPanel Orientation="Horizontal"> -->
-        <!--         <TextBlock Text="Information professionnelle : " FontFamily="Arial" Width="150" TextDecorations="Underline" LineHeight="20"/> -->
-        <!--     </StackPanel> -->
-        <!--     <StackPanel Orientation="Horizontal"> -->
-        <!--         <TextBlock Text="Service : " Width="100"/> -->
-        <!--         <TextBlock Text="{Binding Service.ServiceName}" LineHeight="20" FontWeight="Bold" /> -->
-        <!--     </StackPanel> -->
-        <!-- -->
-        <!--     <StackPanel Orientation="Horizontal"> -->
-        <!--         <TextBlock Text="Sites : " Width="100"/> -->
-        <!--         <TextBlock Text="{Binding Site.Ville}" LineHeight="20" FontWeight="Bold" /> -->
-        <!--     </StackPanel> -->
-        <!-- </StackPanel> -->
-        <!-- -->
-        <!-- <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10"> -->
-        <!--     <Button Content="Modifier" Command="{Binding ModifierCommand}" Width="100" Margin="5"/> -->
-        <!--     <Button Content="Supprimer" Command="{Binding SupprimerCommand}" Width="100" Margin="5" Background="Red" Foreground="White"/> -->
-        <!--     <Button Content = "Retour" Click = "GoBack_Click" Width="100" Margin="5"/> -->
-        <!-- </StackPanel> -->
    </Grid>
 </Page>

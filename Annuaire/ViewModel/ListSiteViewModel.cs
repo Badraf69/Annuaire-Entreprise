@@ -30,7 +30,8 @@ public class ListSiteViewModel :INotifyPropertyChanged
         DeleteSiteCommand = new AsyncRelayCommand(
             async () => await DeleteSite(),
             () => SelectedSite != null
-        );        LoadSites();
+        );        
+        LoadSites();
     }
     
 

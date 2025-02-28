@@ -15,6 +15,7 @@ public class NavigationViewModel
     public ICommand NavigateToAddEmployeeCommand { get; set; }
     public ICommand NavigateToAddUserCommand { get; set; }
     public ICommand NavigateToUpdateEmployeesCommand { get; set; }
+    public ICommand NavigateToListUserCommand { get; set; }
     
 
     public NavigationViewModel()
@@ -27,6 +28,7 @@ public class NavigationViewModel
         NavigateToAddEmployeeCommand = new RelayCommand(_ => NavigateToAddEmployee());
         NavigateToAddUserCommand = new RelayCommand(_ => NavigateToAddUser());
         NavigateToUpdateEmployeesCommand = new RelayCommand(_ => NavigateToUpdateEmployee());
+        NavigateToListUserCommand = new RelayCommand(_ => NavigateToListUser());
 
 
     }
@@ -68,5 +70,10 @@ public class NavigationViewModel
     public void NavigateToUpdateEmployee()
     {
         NavigationService.Navigate(new UpdateEmployeePage());
+    }
+
+    public void NavigateToListUser()
+    {
+        NavigationService.Navigate(new ListUserPage());
     }
 }

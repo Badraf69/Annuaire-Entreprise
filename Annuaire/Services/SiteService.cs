@@ -46,6 +46,12 @@ public class SiteService
 
         return null;
     }
+    /**
+     * Fonction pour la suppression d'un service à partir de son id
+     * Gestion si tentative ce suppression alors q'un employe est associé à ce service
+     * @param int => id
+     * @return int => code reponse serveur
+     */
     public async Task<int> DeleteSiteAsync(int serviceId)
     {
         try
@@ -73,9 +79,13 @@ public class SiteService
             Console.WriteLine(e);
             throw;
         }
-        
     }
 
+    /**
+     * Fonction pour recupérer un service via son id
+     * @param int => id
+     * @return json contenant le service
+     */
     public async Task<Site> getSiteByIdAsync(int serviceId)
     {
         var response = await _httpClient.GetAsync($"GetSiteById/{serviceId}");

@@ -50,24 +50,6 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button> 
-                <!-- <Button Content="Services" Command="{Binding FiltrerCommand}" Width="120" BorderThickness="2" BorderBrush="Gray" Margin="5,0,5,0" > -->
-                <!--     <Button.Template> -->
-                <!--         <ControlTemplate TargetType="Button"> -->
-                <!--             <Border Background="{TemplateBinding Background}" CornerRadius="10" Padding="{TemplateBinding Padding}"> -->
-                <!--                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/> -->
-                <!--             </Border> -->
-                <!--         </ControlTemplate> -->
-                <!--     </Button.Template> -->
-                <!-- </Button>  -->
-                <!-- <Button Content="Sites" Command="{Binding FiltrerCommand}" Width="120" BorderThickness="2" BorderBrush="Gray" Margin="5,0,0,0" > -->
-                <!--     <Button.Template> -->
-                <!--         <ControlTemplate TargetType="Button"> -->
-                <!--             <Border Background="{TemplateBinding Background}" CornerRadius="10" Padding="{TemplateBinding Padding}"> -->
-                <!--                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/> -->
-                <!--             </Border> -->
-                <!--         </ControlTemplate> -->
-                <!--     </Button.Template> -->
-                <!-- </Button>  -->
             </StackPanel>
             <DataGrid Grid.Row="1" x:Name="EmployeeDataGrid" ItemsSource="{Binding Employees}" Margin="10" SelectedItem="{Binding SelectedEmployee, Mode=TwoWay}" SelectionChanged="EmployeesListView_SelectionChanged" AutoGenerateColumns="False" CanUserAddRows="False" BorderThickness="2">
                 

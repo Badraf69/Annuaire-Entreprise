@@ -59,7 +59,7 @@ public partial class MainWindow : Window
 
             if (iskonamiCode)
             {
-                NavigationService.Navigate(new ListeEmployeePage());
+                NavigationService.Navigate(new LoginView());
                 //MessageBox.Show("Konami Code OK");
                 _inputKeysSequence.Clear();
             }
