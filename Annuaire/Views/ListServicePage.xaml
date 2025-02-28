@@ -8,81 +8,74 @@
       Title="ListServicePage" Height="450" Width="800">
     <Grid>
         <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="92*"/>
-            <ColumnDefinition Width="8*"/>
-        </Grid.ColumnDefinitions>
-        <Grid Grid.Column="1" >
-            <StackPanel VerticalAlignment="Center">
-                <Button Content="Menu" 
-                        Command="{Binding NavigateToMenuCommand}" 
-                        Style="{StaticResource buttonNav}" />
-                <Button Content="Site" Command="{Binding NavigateToListSiteCommand}" Style="{StaticResource buttonNav}"/>
-                <Button Content="Employé" Command="{Binding NavigateToListEmployeeCommand}" Style="{StaticResource buttonNav}"/>
-                <Button Click="BtnRetour_Click" Content="Back" Style="{StaticResource buttonNav}"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="92*"/>
+                <ColumnDefinition Width="8*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="1" >
+                <StackPanel VerticalAlignment="Center">
+                    <Button Content="Menu" 
+                            Command="{Binding NavigateToMenuCommand}" 
+                            Style="{StaticResource buttonNav}" />
+                    <Button Content="Site" Command="{Binding NavigateToListSiteCommand}" Style="{StaticResource buttonNav}"/>
+                    <Button Content="Employé" Command="{Binding NavigateToListEmployeeCommand}" Style="{StaticResource buttonNav}"/>
+                    <Button Click="BtnRetour_Click" Content="Back" Style="{StaticResource buttonNav}"/>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/> 
+                    <RowDefinition Height="*"/>    
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" Grid.Row="0"  Margin="20">
+                    <ComboBox x:Name="ServiceFilter" ItemsSource="{Binding }">
+                        <ComboBox.Items>
+                        </ComboBox.Items>
+                    </ComboBox>
+                    <Label>Filtre Site :</Label>
+                    <ComboBox Style="{StaticResource champSearch}">
+                        <ComboBox.Items>
+                        </ComboBox.Items>
+                    </ComboBox>
+                   
+                    <Button Content="Ajouter Service" Command="{Binding NavigateToAddServiceCommand}" 
+                            Width="120"
+                            BorderThickness="2"
+                            BorderBrush="#999190"
+                            Margin="0,0,5,0">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}" CornerRadius="10" Padding="{TemplateBinding Padding}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button> 
+                    <Button Content="Supprimer Services" 
+                            Command="{Binding DeleteServiceCommand}"
+                            IsEnabled="{Binding SelectedService}"
+                            Width="120"
+                            BorderThickness="2"
+                            BorderBrush="#999190"
+                            Margin="0,0,5,0">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}" CornerRadius="10" Padding="{TemplateBinding Padding}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button> 
 
-
-            </StackPanel>
-        </Grid>
-        <Grid Grid.Column="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/> 
-                <RowDefinition Height="*"/>    
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <StackPanel Orientation="Horizontal" Grid.Row="0"  Margin="20">
-                <!-- <TextBox Width="150" Text="{Binding NomFiltre}" /> -->
-                <!-- <ComboBox Width="150" ItemsSource="{Binding Sites}" SelectedItem="{Binding SelectedSite}" /> -->
-                <!-- <ComboBox Width="150" ItemsSource="{Binding Services}" SelectedItem="{Binding SelectedService}" /> -->
-                <ComboBox x:Name="ServiceFilter" ItemsSource="{Binding }">
-                    <ComboBox.Items>
-                    </ComboBox.Items>
-                </ComboBox>
-                <Label>Filtre Site :</Label>
-                <ComboBox Style="{StaticResource champSearch}">
-                    <ComboBox.Items>
-                    </ComboBox.Items>
-                </ComboBox>
-               
-                <Button Content="Ajouter Service" Command="{Binding NavigateToAddServiceCommand}" 
-                        Width="120"
-                        BorderThickness="2"
-                        BorderBrush="#999190"
-                        Margin="0,0,5,0">
-                    <Button.Template>
-                        <ControlTemplate TargetType="Button">
-                            <Border Background="{TemplateBinding Background}" CornerRadius="10" Padding="{TemplateBinding Padding}">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            </Border>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button> 
-                <Button Content="Supprimer Services" 
-                        Command="{Binding DeleteServiceCommand}"
-                        IsEnabled="{Binding SelectedService}"
-                        Width="120"
-                        BorderThickness="2"
-                        BorderBrush="#999190"
-                        Margin="0,0,5,0">
-                    <Button.Template>
-                        <ControlTemplate TargetType="Button">
-                            <Border Background="{TemplateBinding Background}" CornerRadius="10" Padding="{TemplateBinding Padding}">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            </Border>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button> 
-
-            </StackPanel>
-            <DataGrid Grid.Row="1" x:Name="ServiceDataGrid" ItemsSource="{Binding Services}" SelectedItem="{Binding SelectedService, Mode=TwoWay}" AutoGenerateColumns="False">
-                
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Service" Binding="{Binding ServiceName}" Width="100" />
-                </DataGrid.Columns>
-            </DataGrid>
+                </StackPanel>
+                <DataGrid Grid.Row="1" x:Name="ServiceDataGrid" ItemsSource="{Binding Services}" SelectedItem="{Binding SelectedService, Mode=TwoWay}" AutoGenerateColumns="False">
                     
-        <!--<Button Grid.Row="2" Content="Voir fiche" Command="{Binding VoirFicheCommand}" Margin="10"/> -->
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Service" Binding="{Binding ServiceName}" Width="100" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
         </Grid>
-    </Grid>
     </Grid>
 </Page>

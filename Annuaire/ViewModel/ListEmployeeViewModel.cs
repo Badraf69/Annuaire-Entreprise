@@ -10,7 +10,7 @@ using AnnuaireModel;
 
 namespace Annuaire.Views;
 
-public class ListEmployeeViewModel : INotifyPropertyChanged
+public class ListEmployeeViewModel : BaseViewModel
 {
     private readonly EmployeeService _employeeService;
     private ObservableCollection<Employee> _employees;
@@ -35,8 +35,6 @@ public class ListEmployeeViewModel : INotifyPropertyChanged
         NavigateToMenuCommand = App.NavigationVM.NavigateToMenuCommand;
         
     }
-    
-    public event PropertyChangedEventHandler? PropertyChanged;
     
     public ObservableCollection<Employee> Employees
     {
@@ -91,11 +89,6 @@ public class ListEmployeeViewModel : INotifyPropertyChanged
     private async Task NavigateToAddEmployee()
     {
         NavigationService.Navigate(new AddEmployeePage());
-    }
-
-    private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
     private async void Service()
     {

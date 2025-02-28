@@ -9,7 +9,7 @@ using AnnuaireModel;
 
 namespace Annuaire.Views;
 
-public class ListServiceViewModel : INotifyPropertyChanged
+public class ListServiceViewModel : BaseViewModel
 {
 
     private readonly ServiceService _serviceService;
@@ -34,8 +34,6 @@ public class ListServiceViewModel : INotifyPropertyChanged
         );
 
     }
-
-    public event PropertyChangedEventHandler PropertyChanged;
     
     public ObservableCollection<Service> Services
     {
@@ -79,11 +77,6 @@ public class ListServiceViewModel : INotifyPropertyChanged
     {
         var services = await _serviceService.GetServicesAsync();
         Services = new ObservableCollection<Service>(services);
-    }
-    
-    private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
     private void OpenAddServiceWindow()

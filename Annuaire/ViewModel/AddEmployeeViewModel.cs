@@ -9,16 +9,13 @@ using AnnuaireModel;
 
 namespace Annuaire.Views;
 
-public class AddEmployeeViewModel : INotifyPropertyChanged
+public class AddEmployeeViewModel : BaseViewModel
 {
     private  Employee _employee;
     private readonly EmployeeService _employeeService;
     private readonly ServiceService _serviceService;
     private readonly SiteService  _siteService;
-   
     
-    
-    public event PropertyChangedEventHandler PropertyChanged;
     public ICommand AddEmployeeCommand { get; }
     public ICommand GoBackCommand { get; }
 
@@ -64,10 +61,6 @@ public class AddEmployeeViewModel : INotifyPropertyChanged
 
         }
         
-    }
-    private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
     public async void ChargedData()

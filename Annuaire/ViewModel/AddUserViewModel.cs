@@ -7,12 +7,11 @@ using AnnuaireModel;
 
 namespace Annuaire.Views;
 
-public class AddUserViewModel : INotifyPropertyChanged
+public class AddUserViewModel : BaseViewModel
 {
     private readonly UserService _userService;
     private User _user;
     
-    public event PropertyChangedEventHandler? PropertyChanged;
     public ICommand AddUserCommand { get; }
 
     public AddUserViewModel()
@@ -46,10 +45,5 @@ public class AddUserViewModel : INotifyPropertyChanged
         {
             MessageBox.Show("User ajouté avec Succès.","Success", MessageBoxButton.OK, MessageBoxImage.Information);
         }
-    }
-    
-    private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }

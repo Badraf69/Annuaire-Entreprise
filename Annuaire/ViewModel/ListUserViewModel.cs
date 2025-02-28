@@ -8,7 +8,7 @@ using AnnuaireModel;
 
 namespace Annuaire.Views;
 
-public class ListUserViewModel : INotifyPropertyChanged
+public class ListUserViewModel : BaseViewModel
 {
     private readonly UserService _userService;
     private ObservableCollection<User> _users;
@@ -87,16 +87,5 @@ public class ListUserViewModel : INotifyPropertyChanged
                     MessageBoxButton.OK);
             }
         }
-    }
-    
-    
-    
-    
-    
-    public event PropertyChangedEventHandler PropertyChanged;
-    
-    private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }

@@ -11,7 +11,7 @@ using AnnuaireModel;
 
 namespace Annuaire.Views;
 
-public class ListSiteViewModel :INotifyPropertyChanged
+public class ListSiteViewModel : BaseViewModel
 {
     private readonly SiteService _siteService;
     private ObservableCollection<Site> _sites;
@@ -34,8 +34,6 @@ public class ListSiteViewModel :INotifyPropertyChanged
         LoadSites();
     }
     
-
-    public event PropertyChangedEventHandler PropertyChanged;
     public ObservableCollection<Site> Sites
     {
         get => _sites;
@@ -68,12 +66,6 @@ public class ListSiteViewModel :INotifyPropertyChanged
     {
         var sites = await _siteService.GetSitesAsync();
         Sites = new ObservableCollection<Site>(sites);
-    }
-
-    
-    private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
     private async Task DeleteSite()

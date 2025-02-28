@@ -8,12 +8,11 @@ using AnnuaireModel;
 
 namespace Annuaire.Views;
 
-public class AddSiteViewModel : INotifyPropertyChanged
+public class AddSiteViewModel : BaseViewModel
 {
     private Site _site;
     private readonly SiteService _siteService;
     
-    public event PropertyChangedEventHandler PropertyChanged;
     public ICommand AddSiteCommand { get; }
     
 
@@ -57,10 +56,5 @@ public class AddSiteViewModel : INotifyPropertyChanged
             MessageBox.Show($"Erreur lors de l'ajout du site :{ex.Message}", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
         }
         
-    }
-    
-    private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }

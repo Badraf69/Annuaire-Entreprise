@@ -8,12 +8,10 @@ using AnnuaireModel;
 
 namespace Annuaire.Views;
 
-public class FicheEmployeViewModel : INotifyPropertyChanged
+public class FicheEmployeViewModel : BaseViewModel
 {
     private readonly EmployeeService _employeeService;
     private Employee _employee;
-    
-    public event PropertyChangedEventHandler? PropertyChanged;
     
 
     public FicheEmployeViewModel(Employee employee, EmployeeService employeeService)
@@ -59,9 +57,5 @@ public class FicheEmployeViewModel : INotifyPropertyChanged
                 MessageBox.Show("Erreur lors de la suppresion", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);  
             }
         }
-    }
-    private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }
