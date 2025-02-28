@@ -137,6 +137,5 @@
                     Command="{Binding SupprimerCommand}"
                     Style="{StaticResource Btn_menu}" Background="Red"/>
         </StackPanel>
-        
    </Grid>
 </Page>
