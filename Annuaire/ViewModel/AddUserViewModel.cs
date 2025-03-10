@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using Annuaire.Services;
 using AnnuaireModel;
@@ -35,15 +36,20 @@ public class AddUserViewModel : BaseViewModel
 
     public async Task AddUser()
     {
-        MessageBox.Show($"nouvelle utilisateur : {User}");
-        if (User == null)
+        string userName = _user.UserName;
+        string password = _user.PasswordHash;
+        Console.WriteLine($" {_user}");
+        // //MessageBox.Show($"nouvelle utilisateur : {User}");
+        if(string.IsNullOrWhiteSpace(_user.UserName)|| string.IsNullOrWhiteSpace(_user.PasswordHash))
         {
             MessageBox.Show("Veuillez entrer des données valides");
         }
-        var addedUser = await _userService.AddUser(User);
+        var addedUser = await _userService.AddUser(_user);
+        Console.WriteLine(addedUser);
         if (addedUser!=null)
         {
             MessageBox.Show("User ajouté avec Succès.","Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            NavigationService.Navigate(new ListUserPage());
         }
     }
 }

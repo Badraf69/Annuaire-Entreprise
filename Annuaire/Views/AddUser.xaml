@@ -3,18 +3,22 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:local="clr-namespace:Annuaire.Views"
+      
+      xmlns:local="clr-namespace:Annuaire.Helpers"
       mc:Ignorable="d"
       Title="AddUser" Height="450" Width="800">
     <Grid>
         <StackPanel Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock Text="Nom d'utilisateur" HorizontalAlignment="Center"/>
-            <TextBox x:Name="UserNameTextBox" Width="200" Style="{StaticResource input}"/>
+            <TextBox x:Name="UserNameTextBox" Text="{Binding User.UserName, UpdateSourceTrigger=PropertyChanged}" Width="200" Style="{StaticResource input}"/>
             
             <TextBlock Text="Mot de passe" HorizontalAlignment="Center"/>
-            <PasswordBox x:Name="PasswordBox" Width="200" Style="{StaticResource inputPasswordBox}"/>
+            <PasswordBox x:Name="PasswordBox" 
+                         local:PasswordBoxAssistant.BoundPassword="{Binding User.PasswordHash, Mode=TwoWay}"
+                         Width="200" 
+                         Style="{StaticResource inputPasswordBox}"/>
 
-            <Button Content="Ajouter" Click="AddUserButton_Click" Width="200" Height="50" Style="{StaticResource Btn_menu}" HorizontalAlignment="Center"/>
+            <Button Content="Ajouter" Command="{Binding AddUserCommand}" Width="200" Height="50" Style="{StaticResource Btn_menu}" HorizontalAlignment="Center"/>
             
             <TextBlock x:Name="StatusMessage" Foreground="red" Visibility="Collapsed"/>
             

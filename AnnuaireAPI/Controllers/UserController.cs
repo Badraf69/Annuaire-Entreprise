@@ -1,4 +1,5 @@
-﻿using AnnuaireModel;
+﻿using System.Diagnostics.Metrics;
+using AnnuaireModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,6 +11,7 @@ public class UserController : ControllerBase
     private readonly ILogger<UserController> _logger;
     private readonly AppDbContext appContext;
     private readonly User _user;
+    
 
     public UserController(ILogger<UserController> logger, AppDbContext context)
     {
@@ -60,9 +62,12 @@ public class UserController : ControllerBase
     }
     
     //Route API pour l'ajout d'un user
-    [HttpPost("Post[controller]", Name = "AddUser")] //ValidateAntiForgeryToken
+    [HttpPost("Add[controller]", Name = "AddUser")] //ValidateAntiForgeryToken
     public async Task<IActionResult> AddUser([FromBody] User user)
     {
+        Console.WriteLine("usercontroller");
+        Console.WriteLine(user.UserName);
+        Console.WriteLine(user.PasswordHash);
         try
         {
             if (user == null)
@@ -91,6 +96,12 @@ public class UserController : ControllerBase
             if (user == null)
             {
                 return NotFound(new {message="Utilisateur non trouvé"});
+            }
+
+            int userCount = await appContext.Users.CountAsync();
+            if (userCount <= 1)
+            {
+                return StatusCode(400, new { message = "Vous ne pouvez pas supprimer le dernier utilisateur." });
             }
             appContext.Users.Remove(user);
             await appContext.SaveChangesAsync();

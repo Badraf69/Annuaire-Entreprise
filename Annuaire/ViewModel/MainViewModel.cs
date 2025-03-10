@@ -1,37 +1,51 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
+using AnnuaireModel;
 
 namespace Annuaire.Views;
 
-public class MainViewModel : INotifyPropertyChanged
+public class MainViewModel : BaseViewModel
 {
+    public LoginViewModel Login { get; set; }
+    public ICommand LoginCommand { get; set; }
+    public ICommand LogoutCommand { get; set; }
+    //Navigation
     public MainViewModel()
     {
         NavigateToListEmployeeCommand = App.NavigationVM.NavigateToListEmployeeCommand;
         NavigateToAddEmployeeCommand = App.NavigationVM.NavigateToAddEmployeeCommand;
         NavigateToListServiceCommand = App.NavigationVM.NavigateToListServiceCommand;
-        //NavigateToAddServiceCommand = App.NavigationVM.NavigateToAddServiceCommand;
         NavigateToListSiteCommand = App.NavigationVM.NavigateToListSiteCommand;
         NavigateToAddSiteCommand = App.NavigationVM.NavigateToAddSiteCommand;
         NavigateToAddUserCommand = App.NavigationVM.NavigateToAddUserCommand;
-
-
-
+        NavigateToListUserCommand = App.NavigationVM.NavigateToListUserCommand;
+        
+        Login = new LoginViewModel();
+        LoginCommand = new RelayCommand(_=>LoginUser());
+        LogoutCommand = new RelayCommand(_=>LogoutUser());
     }
-    public event PropertyChangedEventHandler? PropertyChanged;
 
+    //Relay command
     public ICommand NavigateToListEmployeeCommand { get; }
     public ICommand NavigateToAddEmployeeCommand { get; }
     public ICommand NavigateToListServiceCommand { get; }
-    //public ICommand NavigateToAddServiceCommand { get; }
     public ICommand NavigateToListSiteCommand { get; }
     public ICommand NavigateToAddSiteCommand { get; }
     public ICommand NavigateToAddUserCommand { get; }
+    public ICommand NavigateToListUserCommand { get; }
 
 
-    private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    
+    //Fonction pour la gestion de connection et déconnection des utilisateurs
+    private void LoginUser()
     {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        Login.IsLoginLoggedIn = true;
     }
+
+    private void LogoutUser()
+    {
+        Login.IsLoginLoggedIn = false;
+    }
+
 }

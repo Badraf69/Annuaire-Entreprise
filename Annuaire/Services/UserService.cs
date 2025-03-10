@@ -20,8 +20,8 @@ public class UserService
     {
         try
         {
-            User newUser = user;
-            MessageBox.Show($"nouvelle utilisateur : {newUser}");
+            //User newUser = user;
+            //MessageBox.Show($"nouvelle utilisateur : {newUser}");
             
             var response = await _httpClient.PostAsJsonAsync($"AddUser", user);
             if (response.IsSuccessStatusCode)
