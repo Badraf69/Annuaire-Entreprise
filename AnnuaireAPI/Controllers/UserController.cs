@@ -87,7 +87,7 @@ public class UserController : ControllerBase
     }
     
     //Route API pour supprimer un utilisateur
-    [HttpDelete("Delete/{id}", Name = "DeleteUser")]
+    [HttpDelete("Delete[controller]/{id}", Name = "DeleteUser")]
     public async Task<IActionResult> DeleteUser(int id)
     {
         try
@@ -101,7 +101,7 @@ public class UserController : ControllerBase
             int userCount = await appContext.Users.CountAsync();
             if (userCount <= 1)
             {
-                return StatusCode(400, new { message = "Vous ne pouvez pas supprimer le dernier utilisateur." });
+                return StatusCode(401, new { message = "Vous ne pouvez pas supprimer le dernier utilisateur." });
             }
             appContext.Users.Remove(user);
             await appContext.SaveChangesAsync();
