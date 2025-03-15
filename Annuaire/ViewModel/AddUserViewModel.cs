@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,6 +13,8 @@ public class AddUserViewModel : BaseViewModel
 {
     private readonly UserService _userService;
     private User _user;
+    private ObservableCollection<User> _users;
+    
     
     public ICommand AddUserCommand { get; }
 
@@ -19,8 +22,9 @@ public class AddUserViewModel : BaseViewModel
     {
         _userService = new UserService();
         User = new User();
+        Users = new ObservableCollection<User>();
         AddUserCommand = new RelayCommand(async (_) => await AddUser());
-
+        LoadUsers();
 
     }
 
@@ -33,19 +37,42 @@ public class AddUserViewModel : BaseViewModel
             OnPropertyChanged();
         }
     }
-
+    //liste des users nécessaire pour le contrôle d'existance
+    public ObservableCollection<User> Users
+    {
+        get => _users;
+        set
+        {
+            _users = value;
+            OnPropertyChanged();
+        }
+    }
+    private async void LoadUsers()
+    {
+        var userList = await _userService.GetUsersAsync();
+        if (userList != null)
+        {
+            Users = new ObservableCollection<User>(userList);
+        }
+    }
     public async Task AddUser()
     {
         string userName = _user.UserName;
         string password = _user.PasswordHash;
-        Console.WriteLine($" {_user}");
-        // //MessageBox.Show($"nouvelle utilisateur : {User}");
+
+        //Contrôle que toutes les champs sont non vide messag le cas écheant 
         if(string.IsNullOrWhiteSpace(_user.UserName)|| string.IsNullOrWhiteSpace(_user.PasswordHash))
         {
             MessageBox.Show("Veuillez entrer des données valides");
         }
+        //Contrôle si un utilisateur ayant le même nom existe déjà et renvoi d'un message si c'est le cas
+        if (Users.Any(u => u.UserName == userName))
+        {
+            MessageBox.Show("Un utlisateur avec ce nom existe déjà");
+            return;
+        }
         var addedUser = await _userService.AddUser(_user);
-        Console.WriteLine(addedUser);
+
         if (addedUser!=null)
         {
             MessageBox.Show("User ajouté avec Succès.","Success", MessageBoxButton.OK, MessageBoxImage.Information);

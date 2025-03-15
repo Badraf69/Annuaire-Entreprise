@@ -14,7 +14,7 @@
             
             <TextBlock Text="Mot de passe" HorizontalAlignment="Center"/>
             <PasswordBox x:Name="PasswordBox" 
-                         local:PasswordBoxAssistant.BoundPassword="{Binding User.PasswordHash, Mode=TwoWay}"
+                         local:PasswordBoxBehavior.BoundPassword="{Binding User.PasswordHash, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          Width="200" 
                          Style="{StaticResource inputPasswordBox}"/>
 
