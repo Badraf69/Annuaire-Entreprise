@@ -1,45 +1,23 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using Annuaire.Views;
-using AnnuaireAPI.Controllers;
-using Microsoft.Win32.SafeHandles;
 
-namespace Annuaire;
-
-
-public partial class LoginView : Page
+namespace Annuaire
 {
-    private readonly AppDbContext _appDbContext;
-    public LoginView()
+    public partial class LoginView : Page
     {
-        InitializeComponent();
-        
-    }
-
-    private void LoginButton(object sender, RoutedEventArgs e)
-    {
-        string userName = UserNameTextBox.Text;
-        string password = PasswordBox.Password;
-
-        if (AuthenticateUser(userName, password))
+        public LoginView()
         {
-            Annuaire.NavigationService.Navigate(new MainPage());
+            InitializeComponent();
+            DataContext = new LoginViewModel();
         }
-        else
+
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
-            ErrorMessage.Text = "Nom d'utilisateur ou mot de passe incorrect.";
-            ErrorMessage.Visibility = Visibility.Visible;
+            if (DataContext is LoginViewModel viewModel)
+            {
+                viewModel.Password = ((PasswordBox)sender).Password; // Stocker le mot de passe en clair TEMPORAIREMENT
+            }
         }
     }
-
-    private bool AuthenticateUser(string userName, string password)
-    {
-       var user = _appDbContext.Users.SingleOrDefault(u => u.UserName == userName);
-       if (user != null)
-       {
-           return BCrypt.Net.BCrypt.Verify(password, user.PasswordHash);
-       }
-       return false;
-    }
-    
 }
