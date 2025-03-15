@@ -16,7 +16,7 @@ namespace Annuaire
         {
             if (DataContext is LoginViewModel viewModel)
             {
-                viewModel.Password = ((PasswordBox)sender).Password; // Stocker le mot de passe en clair TEMPORAIREMENT
+                viewModel.Password = ((PasswordBox)sender).Password;
             }
         }
     }
