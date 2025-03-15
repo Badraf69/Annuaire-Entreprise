@@ -21,4 +21,8 @@ public partial class AddUser : Page
 
         _context = new AppDbContext(options);
     }
+    private void BtnRetour_Click(object sender, RoutedEventArgs e)
+    {
+        Annuaire.NavigationService.Instance.GoBack();
+    }
 }

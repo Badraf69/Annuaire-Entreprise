@@ -3,10 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Annuaire"
              xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+             xmlns:global="clr-namespace:"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <!-- Style pour les boutons de navigation-->
-
+        <global:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
         <Style x:Key="buttonNav" TargetType="Button">
              <Setter Property="Background" Value="Transparent"/>
              <Setter Property="Foreground" Value="Black"/>
@@ -265,4 +265,5 @@
             </Setter>
         </Style>
     </Application.Resources>
+    
 </Application>

@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:Annuaire.ViewModel"
+      xmlns:helpers="clr-namespace:Annuaire.Helpers"
       mc:Ignorable="d"
       Title="ListServicePage" Height="450" Width="800">
     <Grid>
@@ -43,7 +44,7 @@
                             Width="120"
                             BorderThickness="2"
                             BorderBrush="#999190"
-                            Margin="0,0,5,0">
+                            Margin="0,0,5,0" Visibility="{Binding Source={x:Static helpers:SessionManager.IsUserLoggedIn}, Converter={StaticResource BooleanToVisibilityConverter}}">
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <Border Background="{TemplateBinding Background}" CornerRadius="10" Padding="{TemplateBinding Padding}">
@@ -58,7 +59,8 @@
                             Width="120"
                             BorderThickness="2"
                             BorderBrush="#999190"
-                            Margin="0,0,5,0">
+                            Margin="0,0,5,0"
+                            Visibility="{Binding Source={x:Static helpers:SessionManager.IsUserLoggedIn}, Converter={StaticResource BooleanToVisibilityConverter}}">
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <Border Background="{TemplateBinding Background}" CornerRadius="10" Padding="{TemplateBinding Padding}">

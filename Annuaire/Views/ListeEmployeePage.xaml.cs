@@ -11,8 +11,8 @@ namespace Annuaire.Views
         public ListeEmployeePage()
         {
             InitializeComponent();
-            var employeeService = new EmployeeService();
-            DataContext = new ListEmployeeViewModel(employeeService);
+            //var employeeService = new EmployeeService();
+            DataContext = new ListEmployeeViewModel(new EmployeeService());
         }
 
         private void EmployeesListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -27,11 +27,7 @@ namespace Annuaire.Views
         {
             Annuaire.NavigationService.Instance.GoBack();
         }
-
-        private void FilterEmployee(object sender, RoutedEventArgs e)
-        {
-            var employeeService = new EmployeeService();
-        }
+        
 
     }
 }

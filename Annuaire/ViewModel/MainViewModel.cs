@@ -21,7 +21,7 @@ public class MainViewModel : BaseViewModel
         NavigateToAddUserCommand = App.NavigationVM.NavigateToAddUserCommand;
         NavigateToListUserCommand = App.NavigationVM.NavigateToListUserCommand;
         
-        Login = new LoginViewModel();
+        //Login = new LoginViewModel();
         LoginCommand = new RelayCommand(_=>LoginUser());
         LogoutCommand = new RelayCommand(_=>LogoutUser());
     }
@@ -40,12 +40,12 @@ public class MainViewModel : BaseViewModel
     //Fonction pour la gestion de connection et déconnection des utilisateurs
     private void LoginUser()
     {
-        Login.IsLoginLoggedIn = true;
+        //Login.IsLoginLoggedIn = true;
     }
 
     private void LogoutUser()
     {
-        Login.IsLoginLoggedIn = false;
+        //Login.IsLoginLoggedIn = false;
     }
 
 }

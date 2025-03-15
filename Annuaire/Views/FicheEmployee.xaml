@@ -1,6 +1,7 @@
 ﻿<Page x:Class="Annuaire.FicheEmployee"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:helpers="clr-namespace:Annuaire.Helpers"
       Title="Fiche Employé">
 
     <Grid Margin="20">
@@ -128,14 +129,18 @@
             <!--         Command="{Binding AddEmployeeCommand}"  -->
             <!--         Style="{StaticResource Btn_menu}"/> -->
             <Button Content="Modifier"
-                    Command="{Binding ModifierCommand}"
-                    Style="{StaticResource Btn_menu}" Background="Blue"/>
+                    Command="{Binding NavigateToUpdateEmployeeCommand}"
+                    Style="{StaticResource Btn_menu}" Background="Blue"
+                    Visibility="{Binding Source={x:Static helpers:SessionManager.IsUserLoggedIn}, Converter={StaticResource BooleanToVisibilityConverter}}"
+                    />
             <Button Content = "Retour"
                     Click ="GoBack_Click"
                     Style="{StaticResource Btn_menu}"/>
             <Button Content="Supprimer"
                     Command="{Binding SupprimerCommand}"
-                    Style="{StaticResource Btn_menu}" Background="Red"/>
+                    Style="{StaticResource Btn_menu}" Background="Red"
+                    Visibility="{Binding Source={x:Static helpers:SessionManager.IsUserLoggedIn}, Converter={StaticResource BooleanToVisibilityConverter}}"
+                    />
         </StackPanel>
    </Grid>
 </Page>

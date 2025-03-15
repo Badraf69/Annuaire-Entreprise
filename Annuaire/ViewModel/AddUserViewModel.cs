@@ -64,6 +64,7 @@ public class AddUserViewModel : BaseViewModel
         if(string.IsNullOrWhiteSpace(_user.UserName)|| string.IsNullOrWhiteSpace(_user.PasswordHash))
         {
             MessageBox.Show("Veuillez entrer des données valides");
+            return;
         }
         //Contrôle si un utilisateur ayant le même nom existe déjà et renvoi d'un message si c'est le cas
         if (Users.Any(u => u.UserName == userName))

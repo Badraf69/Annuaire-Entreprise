@@ -19,7 +19,7 @@
                          Style="{StaticResource inputPasswordBox}"/>
 
             <Button Content="Ajouter" Command="{Binding AddUserCommand}" Width="200" Height="50" Style="{StaticResource Btn_menu}" HorizontalAlignment="Center"/>
-            
+            <Button Click="BtnRetour_Click" Content="Back" Style="{StaticResource Btn_menu}"/>
             <TextBlock x:Name="StatusMessage" Foreground="red" Visibility="Collapsed"/>
             
         </StackPanel>

@@ -12,6 +12,7 @@ public class FicheEmployeViewModel : BaseViewModel
 {
     private readonly EmployeeService _employeeService;
     private Employee _employee;
+    // private Employee _selectedEmployee;
     
 
     public FicheEmployeViewModel(Employee employee, EmployeeService employeeService)
@@ -19,6 +20,8 @@ public class FicheEmployeViewModel : BaseViewModel
         _employeeService = employeeService;
         Employee = employee;
         SupprimerCommand = new RelayCommand(async _ => await SupprimerEmploye(), _ => Employee != null);
+        // NavigateToUpdateEmployeeCommand =
+        //     new RelayCommand(_ => NavigateToUpdateEmployee(), _ => SelectedEmployee != null);
         NavigateToListEmployeeCommand = App.NavigationVM.NavigateToListEmployeeCommand;
         
         
@@ -35,6 +38,7 @@ public class FicheEmployeViewModel : BaseViewModel
     }
     public ICommand SupprimerCommand { get; }
     public ICommand NavigateToListEmployeeCommand { get; }
+    // public ICommand NavigateToUpdateEmployeeCommand { get; }
     private async Task SupprimerEmploye()
     {
         if (_employeeService == null) return;
@@ -58,4 +62,22 @@ public class FicheEmployeViewModel : BaseViewModel
             }
         }
     }
+    // public Employee SelectedEmployee
+    // {
+    //     get => _selectedEmployee;
+    //     set
+    //     {
+    //         _selectedEmployee = value;
+    //         Console.WriteLine($"Selected employee : {_selectedEmployee}");
+    //         OnPropertyChanged();
+    //         
+    //     }
+    // }
+    // private async Task NavigateToUpdateEmployee()
+    // {
+    //     if (SelectedEmployee != null)
+    //     {
+    //         NavigationService.Navigate(new FicheEmployee(_selectedEmployee, _employeeService));
+    //     }
+    // }
 }

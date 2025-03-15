@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:Annuaire.Views"
+      xmlns:helpers="clr-namespace:Annuaire.Helpers"
       mc:Ignorable="d"
       Title="MainPage" >
     <Grid>
@@ -35,7 +36,9 @@
                     Command="{Binding NavigateToListEmployeeCommand}"/>
             <Button Content="Ajout Employé"  
                     Style="{StaticResource Btn_menu}"
-                    Command="{Binding NavigateToAddEmployeeCommand}"/>
+                    Command="{Binding NavigateToAddEmployeeCommand}"
+                    Visibility="{Binding Source={x:Static helpers:SessionManager.IsUserLoggedIn}, Converter={StaticResource BooleanToVisibilityConverter}}"
+                    />
         </StackPanel>
         
         <!--Colonne Site-->
@@ -46,6 +49,7 @@
             <Button Content="Ajout Site"  
                     Style="{StaticResource Btn_menu}"
                     Command="{Binding NavigateToAddSiteCommand}"
+                    Visibility="{Binding Source={x:Static helpers:SessionManager.IsUserLoggedIn}, Converter={StaticResource BooleanToVisibilityConverter}}"
                     />
         </StackPanel>
         
@@ -57,22 +61,32 @@
             <Button Content="Ajout Service"  
                     Style="{StaticResource Btn_menu}"
                     Click="OnAddServiceButtonClicked"
+                    Visibility="{Binding Source={x:Static helpers:SessionManager.IsUserLoggedIn}, Converter={StaticResource BooleanToVisibilityConverter}}"
                     />
             
         </StackPanel>
         
         <!-- Dernière ligne-->
-        <StackPanel Grid.Row="2" Grid.ColumnSpan="1" Margin="0,50,0,0">
+        <StackPanel Grid.Row="2" Grid.Column="0" Margin="0,50,0,0">
             <Button Content="Ajout utilisateur"
                     Command="{Binding NavigateToAddUserCommand}"
                     Style="{StaticResource Btn_menu}"
+                    Visibility="{Binding Source={x:Static helpers:SessionManager.IsUserLoggedIn}, Converter={StaticResource BooleanToVisibilityConverter}}"
                     />
         </StackPanel>
-        <StackPanel Grid.Row="2" Grid.ColumnSpan="3" Margin="0,50,0,0">
+        <StackPanel Grid.Row="2" Grid.Column="1" Margin="0,50,0,0">
             <Button Content="Liste utilisateur"
                     Command="{Binding NavigateToListUserCommand}"
                     Style="{StaticResource Btn_menu}"
-            />
+                    Visibility="{Binding Source={x:Static helpers:SessionManager.IsUserLoggedIn}, Converter={StaticResource BooleanToVisibilityConverter}}"
+                    />
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="2" Margin="0,50,0,0">
+            <Button Content="Déconnexion"
+                    Command="{Binding LogoutCommand, Source={x:Static helpers:SessionManager.LoginViewModel}}"
+                    Style="{StaticResource Btn_menu}"
+                    Visibility="{Binding Source={x:Static helpers:SessionManager.IsUserLoggedIn}, Converter={StaticResource BooleanToVisibilityConverter}}"
+                    />
         </StackPanel>
         
     </Grid>

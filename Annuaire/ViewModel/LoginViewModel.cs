@@ -3,14 +3,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using Annuaire.Helpers;
 using Annuaire.Services;
 using AnnuaireModel;
+
 
 namespace Annuaire.Views
 {
     public class LoginViewModel : BaseViewModel
     {
-        private readonly UserService _userService;
+        private  UserService _userService;
         private string _username;
         private string _password;
         private bool _isUserLoggedIn;
@@ -21,7 +23,10 @@ namespace Annuaire.Views
             LoginCommand = new AsyncRelayCommand(Login);
             LogoutCommand = new RelayCommand(Logout);
         }
-
+        public void Initialize(UserService userService)
+        {
+            _userService = userService;
+        }
         public string Username
         {
             get => _username;
@@ -62,8 +67,9 @@ namespace Annuaire.Views
             if (user != null && BCrypt.Net.BCrypt.Verify(Password, user.PasswordHash))
             {
                 IsUserLoggedIn = true;
-                MessageBox.Show("Connexion réussie !");
+                SessionManager.IsUserLoggedIn = true;
                 NavigationService.Navigate(new MainPage());
+                MessageBox.Show("Connexion réussie !");
             }
             else
             {
@@ -74,8 +80,11 @@ namespace Annuaire.Views
         private void Logout(object parameter)
         {
             IsUserLoggedIn = false;
+            SessionManager.IsUserLoggedIn = false;
             Username = string.Empty;
             Password = string.Empty;
+            NavigationService.Navigate(new MainPage());
+            
             MessageBox.Show("Déconnexion réussie !");
         }
     }

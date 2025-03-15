@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Navigation;
@@ -51,8 +52,18 @@ public class AddEmployeeViewModel : BaseViewModel
             MessageBox.Show("Tous les champs obligatoire doivent être remplie.", "Validation", MessageBoxButton.OK, MessageBoxImage.Warning);
             return;
         }
-
-        
+        string verifTel = @"^(\+33|0)[1-9](\d{2}){4}$";
+        if (!Regex.IsMatch(Employee.Phone,verifTel) || !Regex.IsMatch(Employee.CellPhone,verifTel) )
+        {
+            MessageBox.Show("Le Format de numéro de téléphone n'est pas correct");
+            return;
+        }
+        string verifMail = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+        if (!Regex.IsMatch(Employee.Email, verifMail))
+        {
+            MessageBox.Show("Le Format de l'email n'est pas correct");
+            return;
+        }
         var addedEmployee = await _employeeService.AddEmployee(Employee);
         if (addedEmployee != null)
         {

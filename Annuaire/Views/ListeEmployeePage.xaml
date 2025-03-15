@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:Annuaire.Views"
+      xmlns:helpers="clr-namespace:Annuaire.Helpers"
       mc:Ignorable="d"
       Title="ListeEmployeePage" Height="550" Width="900">
     
@@ -31,17 +32,26 @@
                 <!-- <TextBox Width="150" Text="{Binding NomFiltre}" /> -->
                 <!-- <ComboBox Width="150" ItemsSource="{Binding Sites}" SelectedItem="{Binding SelectedSite}" /> -->
                 <!-- <ComboBox Width="150" ItemsSource="{Binding Services}" SelectedItem="{Binding SelectedService}" /> -->
-                <ComboBox x:Name="ServiceFilter" ItemsSource="{Binding }">
-                    <ComboBox.Items>
-                    </ComboBox.Items>
-                </ComboBox>
                 <Label>Filtre Site :</Label>
-                <ComboBox Style="{StaticResource champSearch}">
-                    <ComboBox.Items>
-                    </ComboBox.Items>
+                <ComboBox x:Name="SiteFilter" 
+                          ItemsSource="{Binding Sites }"
+                          SelectedItem="{Binding SelectedSite}"
+                          DisplayMemberPath="Ville"
+                          Width="100">
                 </ComboBox>
+                
+                <Label>Filtre Service :</Label>
+                <ComboBox x:Name="ServiceFilter" 
+                          ItemsSource="{Binding Services }"
+                          SelectedItem="{Binding SelectedService}"
+                          DisplayMemberPath="ServiceName"
+                          Width="100">
+                </ComboBox>
+                <TextBox Width="150" Text="{Binding SearchTerm, UpdateSourceTrigger=PropertyChanged}"
+                         Margin="20,0,0,0"/>
                
-                <Button Content="Ajouter Employé" Command="{Binding NavigateToAddEmployeeCommand}" Width="120" BorderThickness="2" BorderBrush="#999190" Margin="0,0,5,0" >
+                <Button Content="Ajouter Employé" Command="{Binding NavigateToAddEmployeeCommand}" Width="120" BorderThickness="2" BorderBrush="#999190" Margin="0,0,5,0" 
+                        Visibility="{Binding Source={x:Static helpers:SessionManager.IsUserLoggedIn}, Converter={StaticResource BooleanToVisibilityConverter}}" >
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border Background="{TemplateBinding Background}" CornerRadius="10" Padding="{TemplateBinding Padding}">
@@ -49,7 +59,9 @@
                             </Border>
                         </ControlTemplate>
                     </Button.Template>
+                    
                 </Button> 
+                
             </StackPanel>
             <DataGrid Grid.Row="1" x:Name="EmployeeDataGrid" ItemsSource="{Binding Employees}" Margin="10" SelectedItem="{Binding SelectedEmployee, Mode=TwoWay}" SelectionChanged="EmployeesListView_SelectionChanged" AutoGenerateColumns="False" CanUserAddRows="False" BorderThickness="2">
                 

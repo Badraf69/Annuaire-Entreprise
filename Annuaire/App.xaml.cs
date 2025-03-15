@@ -1,6 +1,8 @@
 ﻿using System.Configuration;
 using System.Data;
 using System.Windows;
+using Annuaire.Helpers;
+using Annuaire.Services;
 using Annuaire.Views;
 
 namespace Annuaire;
@@ -17,5 +19,6 @@ public partial class App : Application
     {
         base.OnStartup(e);
         NavigationVM = new NavigationViewModel();
+        SessionManager.InitializeLoginViewModel(new UserService());
     }
 }
