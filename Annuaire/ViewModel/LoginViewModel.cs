@@ -60,6 +60,10 @@ namespace Annuaire.Views
         public ICommand LoginCommand { get; }
         public ICommand LogoutCommand { get; }
 
+        /**
+         * Fonction pour la gestion de la connexion
+         * permet de changer le statut a connecté
+         */
         private async Task Login()
         {
             var users = await _userService.GetUsersAsync();
@@ -69,14 +73,18 @@ namespace Annuaire.Views
                 IsUserLoggedIn = true;
                 SessionManager.IsUserLoggedIn = true;
                 NavigationService.Navigate(new MainPage());
-                MessageBox.Show("Connexion réussie !");
+                //MessageBox.Show("Connexion réussie !");
             }
             else
             {
                 MessageBox.Show("Identifiant ou mot de passe incorrect !");
             }
         }
-
+        
+        /**
+         * Fonction de déconnexion
+         * 
+         */
         private void Logout(object parameter)
         {
             IsUserLoggedIn = false;
@@ -84,7 +92,6 @@ namespace Annuaire.Views
             Username = string.Empty;
             Password = string.Empty;
             NavigationService.Navigate(new MainPage());
-            
             MessageBox.Show("Déconnexion réussie !");
         }
     }

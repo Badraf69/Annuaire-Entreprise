@@ -67,6 +67,28 @@ public class EmployeeService
             throw;
         }
     }
+
+    public async Task<Employee> UpdateEmployee(Employee employee)
+    {
+        try
+        {
+            var response = await _httpClient.PutAsJsonAsync($"UpdateEmployee/{employee.Id}", employee);
+            if (response.IsSuccessStatusCode)
+            {
+                return await response.Content.ReadFromJsonAsync<Employee>();
+            }
+            else
+            {
+                throw new Exception($"Erreur lors de la modification d'un employé : { response.ReasonPhrase}");
+            }
+        }
+        
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
     
 
 }

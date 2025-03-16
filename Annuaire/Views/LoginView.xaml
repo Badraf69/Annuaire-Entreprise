@@ -13,14 +13,15 @@
            <Label HorizontalAlignment="Center" Margin="0,50,0,0" FontWeight="Bold" > IDENTIFIANT</Label>
            <TextBox x:Name="UserNameTextBox"
                     Text="{Binding Username, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                    BorderBrush="Blue" BorderThickness="2" > </TextBox>
+                    BorderBrush="Blue" BorderThickness="2" Height="30" FontSize="16" TextAlignment="Center" > </TextBox>
            <Label HorizontalAlignment="Center" Margin="0,20,0,10" FontWeight="Bold" > MOT DE PASSE</Label>
            <PasswordBox x:Name="PasswordBox"
                         PasswordChanged="PasswordBox_PasswordChanged"
-               BorderBrush="Blue" BorderThickness="2"></PasswordBox>
+               BorderBrush="Blue" BorderThickness="2" Height="30" FontSize="16" ></PasswordBox>
            
            <Button Content="Se connecter"
-                   Width="120" 
+                   Width="200" 
+                   Height="30"
                    BorderThickness="2" 
                    BorderBrush="Green" 
                    Margin="0,20,5,0" 
@@ -36,7 +37,8 @@
                    </Button.Template>
            </Button>
            <Button Content="Se Déconnecter"
-                   Width="120"
+                   Width="200"
+                   Height="30"
                    Margin="10,20,10,10"
                    Command="{Binding LogoutCommand}">
                <Button.Template>

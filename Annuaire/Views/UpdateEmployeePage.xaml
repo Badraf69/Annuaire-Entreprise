@@ -29,7 +29,7 @@
         </Grid.ColumnDefinitions>
         
         <!--1er Ligne -->
-        <TextBlock Grid.Row="0" Grid.ColumnSpan="3" Text="Ajouter un employé" 
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="3" Text="Modifier un employé" 
                    FontSize="18" FontWeight="Bold" 
                    HorizontalAlignment="Center" Margin="10"/>
         
@@ -91,7 +91,7 @@
         
         <StackPanel Grid.Row="4" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Left" Margin="10">
             <Button Content="Enregistrer" 
-                    Command="{Binding AddEmployeeCommand}" 
+                    Command="{Binding UpdateEmployeeCommand}" 
                     Style="{StaticResource Btn_menu}"/>
             <Button Content = "Retour"  
                     Click ="GoBack_Click"

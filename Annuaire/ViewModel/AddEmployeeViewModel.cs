@@ -69,9 +69,7 @@ public class AddEmployeeViewModel : BaseViewModel
         {
             MessageBox.Show("Employé ajouté avec Succès.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             NavigationService.Navigate(new ListeEmployeePage());
-
         }
-        
     }
 
     public async void ChargedData()
@@ -87,5 +85,4 @@ public class AddEmployeeViewModel : BaseViewModel
             Sites.Add(site);
         }
     }
-    
 }

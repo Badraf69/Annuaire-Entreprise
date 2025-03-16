@@ -7,16 +7,21 @@ namespace Annuaire.Views;
 
 public partial class UpdateEmployeePage : Page
 {
-    public UpdateEmployeePage()
+    public UpdateEmployeePage( Employee employee, EmployeeService employeeService )
     {
         InitializeComponent();
-        var employeeService = new EmployeeService();
-        DataContext = new UpdateEmployeePage();
+        if (employee == null)
+        {
+            MessageBox.Show( "Problème lors du chargement de l'employee." );
+            NavigationService.Navigate(new ListeEmployeePage());
+        }
+        else
+        {
+            DataContext = new UpdateEmployeeViewModel(employeeService, employee);
+        }
     }
     private void GoBack_Click(object sender, RoutedEventArgs e)
     {
-
         Annuaire.NavigationService.Instance.GoBack();
-
     }
 }
