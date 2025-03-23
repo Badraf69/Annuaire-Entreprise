@@ -19,5 +19,9 @@ namespace Annuaire
                 viewModel.Password = ((PasswordBox)sender).Password;
             }
         }
+        private void BtnRetour_Click(object sender, RoutedEventArgs e)
+        {
+            Annuaire.NavigationService.Instance.GoBack();
+        }
     }
 }

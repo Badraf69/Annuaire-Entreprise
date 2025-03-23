@@ -15,6 +15,7 @@
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="1" >
             <StackPanel VerticalAlignment="Center" >
+                <Button Content="Logout" Command="{Binding LogoutCommand, Source={x:Static helpers:SessionManager.LoginViewModel}}" Style="{StaticResource buttonNav}" Visibility="{Binding Source={x:Static helpers:SessionManager.IsUserLoggedIn}, Converter={StaticResource BooleanToVisibilityConverter}}"></Button>
                 <Button Content="Menu" Command="{Binding NavigateToMenuCommand}" Style="{StaticResource buttonNav}"/>
                 <Button Content="Site" Command="{Binding NavigateToSiteCommand}" Style="{StaticResource buttonNav}"/>
                 <Button Content="Service" Command="{Binding NavigateToServiceCommand}" Style="{StaticResource buttonNav}"/>

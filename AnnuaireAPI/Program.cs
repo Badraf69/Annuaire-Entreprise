@@ -89,10 +89,12 @@
 // app.Run();
 
 
-
+using System.Text;
 using AnnuaireAPI.Controllers;
 using AnnuaireAPI;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -104,7 +106,27 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+// var jwtSettings = builder.Configuration.GetSection("Jwt");
+// var secretKey = jwtSettings["SecretKey"];
+// if (string.IsNullOrEmpty(secretKey))
+// {
+//     throw new ArgumentException("Secret Key is required.");
+// }
+// builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+//     
+//     .AddJwtBearer(options =>
+//     {
+//
+//         options.TokenValidationParameters = new TokenValidationParameters
+//         {
+//             ValidateIssuer = true,
+//             ValidateAudience = true,
+//             ValidateLifetime = true,
+//             ValidIssuer = jwtSettings["Issuer"],  // Exemple : "http://localhost:5000"
+//             ValidAudience = jwtSettings["Audience"],  // Exemple : "http://localhost:5000"
+//             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey)) // Clé secrète
+//         };
+//     });
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
@@ -116,6 +138,7 @@ app.UseHttpsRedirection();
 app.UseRouting();
 app.UseAuthorization();
 app.UseDeveloperExceptionPage();
+// app.UseAuthentication();
 
 app.MapControllers();
 app.Run();

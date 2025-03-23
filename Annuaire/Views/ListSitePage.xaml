@@ -10,8 +10,8 @@
     <Grid>
          <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="92*"/>
-            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="1" >
             <StackPanel VerticalAlignment="Center" Margin="10,0,0,0">

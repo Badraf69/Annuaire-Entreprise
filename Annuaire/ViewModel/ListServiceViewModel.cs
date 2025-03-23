@@ -87,6 +87,12 @@ public class ListServiceViewModel : BaseViewModel
         {
             string serviceName = window.ServiceName;
             _service.ServiceName = serviceName;
+            if (Services.Any(s=>s.ServiceName == Service.ServiceName))
+            {
+                
+                MessageBox.Show("Un service portant ce nom existe déjà.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
             var addService =  _serviceService.AddServiceAsync(_service);
             if (addService != null)
             {

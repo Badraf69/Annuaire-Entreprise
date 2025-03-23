@@ -21,6 +21,7 @@ public class ListUserViewModel : BaseViewModel
         Users = new ObservableCollection<User>();
         
         NavigateToListServiceCommand = App.NavigationVM.NavigateToListServiceCommand;
+        NavigateToListSiteCommand = App.NavigationVM.NavigateToListSiteCommand;
         NavigateToListEmployeeCommand = App.NavigationVM.NavigateToListEmployeeCommand;
         NavigateToMenuCommand = App.NavigationVM.NavigateToMenuCommand;
         NavigateToAddUserCommand = App.NavigationVM.NavigateToAddUserCommand;
@@ -54,6 +55,7 @@ public class ListUserViewModel : BaseViewModel
     public ICommand NavigateToListEmployeeCommand { get; set; }
     public ICommand NavigateToMenuCommand { get; set; }
     public ICommand NavigateToAddUserCommand { get; set; }
+    public ICommand NavigateToListSiteCommand { get; set; }
     public ICommand DeleteUserCommand { get; set; }
     
     private async void LoadUsers()

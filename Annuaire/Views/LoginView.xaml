@@ -51,7 +51,7 @@
                    </ControlTemplate>
                </Button.Template>
            </Button>
-           
+           <Button Click="BtnRetour_Click" Content="Back" Style="{StaticResource Btn_menu}"/>
        </StackPanel>
     </Grid>
 </Page>
