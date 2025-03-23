@@ -30,16 +30,6 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <StackPanel Orientation="Horizontal" Grid.Row="0"  Margin="20">
-                <!-- <TextBox Width="150" Text="{Binding NomFiltre}" /> -->
-                <!-- <ComboBox Width="150" ItemsSource="{Binding Sites}" SelectedItem="{Binding SelectedSite}" /> -->
-                <!-- <ComboBox Width="150" ItemsSource="{Binding Services}" SelectedItem="{Binding SelectedService}" /> -->
-                <ComboBox x:Name="ServiceFilter" ItemsSource="{Binding }">
-
-                </ComboBox>
-                <Label>Filtre Site :</Label>
-                <ComboBox Style="{StaticResource champSearch}">
-
-                </ComboBox>
                
                 <Button Content="Ajouter Site" 
                         Command="{Binding NavigateToAddSiteCommand}" 

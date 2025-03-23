@@ -34,16 +34,6 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <StackPanel Orientation="Horizontal" Grid.Row="0"  Margin="20">
-                    <ComboBox x:Name="USerFilter" ItemsSource="{Binding }">
-                        <ComboBox.Items>
-                        </ComboBox.Items>
-                    </ComboBox>
-                    <Label>Filtre User :</Label>
-                    <ComboBox Style="{StaticResource champSearch}">
-                        <ComboBox.Items>
-                        </ComboBox.Items>
-                    </ComboBox>
-                   
                     <Button Content="Ajouter User" Command="{Binding NavigateToAddUserCommand}" 
                             Width="120"
                             BorderThickness="2"

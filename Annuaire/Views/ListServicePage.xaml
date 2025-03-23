@@ -32,15 +32,6 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <StackPanel Orientation="Horizontal" Grid.Row="0"  Margin="20">
-                    <ComboBox x:Name="ServiceFilter" ItemsSource="{Binding }">
-                        <ComboBox.Items>
-                        </ComboBox.Items>
-                    </ComboBox>
-                    <Label>Filtre Site :</Label>
-                    <ComboBox Style="{StaticResource champSearch}">
-                        <ComboBox.Items>
-                        </ComboBox.Items>
-                    </ComboBox>
                    
                     <Button Content="Ajouter Service" Command="{Binding NavigateToAddServiceCommand}" 
                             Width="120"
