@@ -27,6 +27,8 @@ public class ListSiteViewModel : BaseViewModel
         NavigateToListEmployeeCommand = App.NavigationVM.NavigateToListEmployeeCommand;
         NavigateToMenuCommand = App.NavigationVM.NavigateToMenuCommand;
         NavigateToAddSiteCommand = App.NavigationVM.NavigateToAddSiteCommand;
+        NavigateToUpdateSiteCommand = 
+            new RelayCommand(_=> NavigateToUpdateSite(), _=> SelectedSite != null);
         DeleteSiteCommand = new AsyncRelayCommand(
             async () => await DeleteSite(),
             () => SelectedSite != null
@@ -60,6 +62,7 @@ public class ListSiteViewModel : BaseViewModel
     public ICommand NavigateToMenuCommand { get; set; }
     public ICommand NavigateToAddSiteCommand { get; set; }
     public ICommand DeleteSiteCommand { get; set; }
+    public ICommand NavigateToUpdateSiteCommand { get; set; }
 
     //Fonctions pour les données
     private async void LoadSites()
@@ -97,6 +100,14 @@ public class ListSiteViewModel : BaseViewModel
                 MessageBox.Show($"Erreur lors de la suppression d'un site : ", "Error", 
                     MessageBoxButton.OK);
             }
+        }
+    }
+
+    private async Task NavigateToUpdateSite()
+    {
+        if (SelectedSite != null)
+        {
+            NavigationService.Navigate(new UpdateSitePage(SelectedSite, _siteService));
         }
     }
 }

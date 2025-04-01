@@ -18,6 +18,7 @@ public class NavigationViewModel
     public ICommand NavigateToAddUserCommand { get; set; }
     public ICommand NavigateToUpdateEmployeeCommand { get; set; }
     public ICommand NavigateToListUserCommand { get; set; }
+    public ICommand NavigateToUpdateSiteCommand { get; set; }
     
 
     public NavigationViewModel()
@@ -76,5 +77,10 @@ public class NavigationViewModel
     public void NavigateToListUser()
     {
         NavigationService.Navigate(new ListUserPage());
+    }
+
+    public void NavigateToUpdateSite(Site site, SiteService siteService)
+    {
+        NavigationService.Navigate(new UpdateSitePage(site, siteService));
     }
 }
