@@ -32,6 +32,8 @@ public class ListServiceViewModel : BaseViewModel
             async () => await DeleteService(),
             () => SelectedService != null
         );
+        NavigateToUpdateServiceCommand = 
+            new RelayCommand(_=>NavigateToUpdateService(), _ => SelectedService != null);
 
     }
     
@@ -72,6 +74,7 @@ public class ListServiceViewModel : BaseViewModel
     public ICommand NavigateToMenuCommand { get; }
     public ICommand NavigateToAddServiceCommand { get; set; }
     public ICommand DeleteServiceCommand { get; set; }
+    public ICommand NavigateToUpdateServiceCommand { get; set; }
     
     public async void LoadService()
     {
@@ -136,5 +139,13 @@ public class ListServiceViewModel : BaseViewModel
             }
         }
 
+    }
+
+    private async void NavigateToUpdateService()
+    {
+        if (SelectedService != null)
+        {
+            NavigationService.Navigate(new UpdateServicePage(SelectedService, _serviceService));
+        }
     }
 }

@@ -64,7 +64,7 @@
                     </Button> 
 
                 </StackPanel>
-                <DataGrid Grid.Row="1" x:Name="ServiceDataGrid" ItemsSource="{Binding Services}" SelectedItem="{Binding SelectedService, Mode=TwoWay}" AutoGenerateColumns="False">
+                <DataGrid Grid.Row="1" x:Name="ServiceDataGrid" ItemsSource="{Binding Services}" SelectedItem="{Binding SelectedService, Mode=TwoWay}" SelectionChanged="ServiceListView_SelectionChanged" AutoGenerateColumns="False">
                     
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Service" Binding="{Binding ServiceName}" Width="100" />

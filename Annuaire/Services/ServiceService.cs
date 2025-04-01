@@ -85,4 +85,24 @@ public class ServiceService
         }
         
     }
+    public async Task<Service> UpdateService(Service service)
+    {
+        try
+        {
+            var response = await _httpClient.PutAsJsonAsync($"UpdateService/{service.Id}", service);
+            if (response.IsSuccessStatusCode)
+            {
+                return await response.Content.ReadFromJsonAsync<Service>();
+            }
+            else
+            {
+                throw new Exception($"Erreur lors de la modification d'un service : { response.ReasonPhrase}");
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
 }
