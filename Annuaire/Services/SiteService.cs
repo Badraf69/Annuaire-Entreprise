@@ -94,4 +94,25 @@ public class SiteService
         return JsonSerializer.Deserialize<Site>(json, new JsonSerializerOptions{ PropertyNameCaseInsensitive = true });
         
     }
+
+    public async Task<Site> UpdateSite(Site site)
+    {
+        try
+        {
+            var response = await _httpClient.PutAsJsonAsync($"UpdateSite/{site.Id}", site);
+            if (response.IsSuccessStatusCode)
+            {
+                return await response.Content.ReadFromJsonAsync<Site>();
+            }
+            else
+            {
+                throw new Exception($"Erreur lors de la modification d'un site : { response.ReasonPhrase}");
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
 }

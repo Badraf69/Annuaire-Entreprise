@@ -30,9 +30,6 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <StackPanel Orientation="Horizontal" Grid.Row="0"  Margin="20">
-                <!-- <TextBox Width="150" Text="{Binding NomFiltre}" /> -->
-                <!-- <ComboBox Width="150" ItemsSource="{Binding Sites}" SelectedItem="{Binding SelectedSite}" /> -->
-                <!-- <ComboBox Width="150" ItemsSource="{Binding Services}" SelectedItem="{Binding SelectedService}" /> -->
                 <Label>Filtre Site :</Label>
                 <ComboBox x:Name="SiteFilter" 
                           ItemsSource="{Binding Sites }"
@@ -64,6 +61,7 @@
                 </Button> 
                 
             </StackPanel>
+            
             <DataGrid Grid.Row="1" x:Name="EmployeeDataGrid" ItemsSource="{Binding Employees}" Margin="10" SelectedItem="{Binding SelectedEmployee, Mode=TwoWay}" SelectionChanged="EmployeesListView_SelectionChanged" AutoGenerateColumns="False" CanUserAddRows="False" BorderThickness="2">
                 
                 <DataGrid.Columns>
@@ -76,9 +74,8 @@
                     <DataGridTextColumn Header="Site" Binding="{Binding Site.Ville}" Width="100"/>
                 </DataGrid.Columns>
             </DataGrid>
-                    
         <!--<Button Grid.Row="2" Content="Voir fiche" Command="{Binding VoirFicheCommand}" Margin="10"/> -->
         </Grid>
     </Grid>
-    
+       
 </Page>

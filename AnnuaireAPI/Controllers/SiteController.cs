@@ -100,4 +100,27 @@ public class SiteController : ControllerBase
             return StatusCode(500,$"Erreur interne du serveur: {ex.Message}");
         }
     }
+    // Route pour update un site
+    [HttpPut("Update[controller]/{id}", Name = "UpdateSite")]
+    public async Task<IActionResult> UpdateSite(int id, Site updatedsite)
+    {
+        try
+        {
+            var existingSite = appContext.Sites.FirstOrDefault(s => s.Id == id);
+            if (existingSite == null)
+            {
+                return NotFound(new {message = "No site found"});
+            }
+            existingSite.Ville = updatedsite.Ville;
+            existingSite.Type = updatedsite.Type;
+            appContext.Entry(existingSite).State = EntityState.Modified;
+            await appContext.SaveChangesAsync();
+            return Ok(existingSite);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "erreur lors du UpdateEmployeeById: {Message}", ex.Message);
+            return StatusCode(500,$"Erreur interne du serveur: {ex.Message}");
+        }
+    }
 }

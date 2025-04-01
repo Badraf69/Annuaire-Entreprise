@@ -65,7 +65,7 @@
                     </Button.Template>
                 </Button> 
             </StackPanel>
-            <DataGrid Grid.Row="1" x:Name="ServiceDataGrid" ItemsSource="{Binding Sites}" SelectedItem="{Binding SelectedSite, Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="False">
+            <DataGrid Grid.Row="1" x:Name="SiteDataGrid" ItemsSource="{Binding Sites}" SelectedItem="{Binding SelectedSite, Mode=TwoWay }" SelectionChanged="SiteListView_SelectionChanged" AutoGenerateColumns="False" CanUserAddRows="False">
                 
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Site" Binding="{Binding Ville}" Width="100" />
