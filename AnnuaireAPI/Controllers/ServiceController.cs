@@ -86,8 +86,8 @@ public class ServiceController : ControllerBase
     }
     
     //Route API pour modifier un service via son id
-    [HttpPut("Update[controller]ById/{id}", Name = "UpdateServiceById")]
-    public IActionResult UpdateServiceById(int id, Service updateService)
+    [HttpPut("Update[controller]/{id}", Name = "UpdateService")]
+    public IActionResult UpdateService(int id, Service updateService)
     {
         try
         {

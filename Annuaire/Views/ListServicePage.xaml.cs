@@ -17,6 +17,13 @@ public partial class ListServicePage : Page
         DataContext = new ListServiceViewModel(serviceService, service);
         
     }
+    private void ServiceListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (DataContext is ListServiceViewModel viewModel && viewModel.SelectedService != null)
+        {
+            viewModel.NavigateToUpdateServiceCommand.Execute(null);
+        }
+    }
     private void BtnRetour_Click(object sender, RoutedEventArgs e)
     {
         Annuaire.NavigationService.Instance.GoBack();
