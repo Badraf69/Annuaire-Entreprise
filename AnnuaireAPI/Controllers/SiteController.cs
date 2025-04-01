@@ -100,7 +100,7 @@ public class SiteController : ControllerBase
             return StatusCode(500,$"Erreur interne du serveur: {ex.Message}");
         }
     }
-
+    // Route pour update un site
     [HttpPut("Update[controller]/{id}", Name = "UpdateSite")]
     public async Task<IActionResult> UpdateSite(int id, Site updatedsite)
     {
